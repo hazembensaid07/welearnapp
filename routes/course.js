@@ -13,4 +13,5 @@ const router = express.Router();
  */
 
 router.post("/course", controllers.addCourse);
+router.get("/course", controllers.getCoursesByCategory);
 module.exports = router;
