@@ -22,7 +22,7 @@ mongoose
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const contactRoutes = require("./routes/contact");
-
+const courseRoutes = require("./controllers/course");
 // app middlewares
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -35,6 +35,7 @@ app.use(express.json());
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", contactRoutes);
+app.use("/api", courseRoutes);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {

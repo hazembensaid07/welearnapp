@@ -38,7 +38,7 @@ const Contact = () => {
               <span className="subheading">contact</span>
               <a
                 target="_blank"
-                href="https://www.google.com/maps/dir/?api=1&destination=36.90393979607779, 10.184254969056784"
+                href="https://www.google.com/maps/dir/?api=1&destination=36.90401271960908, 10.184372985745814"
               >
                 <h3>
                   For more information about our courses, Visit Us in our Local
