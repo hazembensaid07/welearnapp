@@ -32,9 +32,9 @@ exports.addCourse = async (req, res) => {
 };
 exports.getCoursesByCategory = async (req, res) => {
   try {
-    const result = await Course.find({ _id: req.body.id });
+    const result = await Course.findOne({ _id: req.body.id });
     console.log(result);
-    res.send({ response: result, message: "courses found " });
+    res.send({ message: "courses found " });
   } catch (error) {
     res.status(400).send({ message: "There is no courses with this category" });
   }
