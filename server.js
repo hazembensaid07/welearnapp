@@ -22,7 +22,7 @@ mongoose
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const contactRoutes = require("./routes/contact");
-const courseRoutes = require("./controllers/course");
+const courseRoutes = require("./routes/course");
 // app middlewares
 app.use(morgan("dev"));
 app.use(bodyParser.json());
