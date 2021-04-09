@@ -1,15 +1,15 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Signup from "./auth/Signup";
-import Signin from "./auth/Signin";
-import Activate from "./auth/Activate";
+import Signup from "./Components/auth/Signup";
+import Signin from "./Components/auth/Signin";
+import Activate from "./Components/auth/Activate";
 import Private from "./core/Private";
 import Admin from "./core/Admin";
-import PrivateRoute from "./auth/PrivateRoute";
-import AdminRoute from "./auth/AdminRoute";
-import Forgot from "./auth/Forgot";
-import Reset from "./auth/Reset";
+import PrivateRoute from "./Components/auth/PrivateRoute";
+import AdminRoute from "./Components/auth/AdminRoute";
+import Forgot from "./Components/auth/Forgot";
+import Reset from "./Components/auth/Reset";
 import CourseView from "./Pages/CourseView";
 import About from "./Pages/About";
 import Home from "./Pages/Home";

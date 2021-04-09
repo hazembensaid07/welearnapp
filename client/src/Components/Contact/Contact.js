@@ -1,7 +1,34 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postContacts } from "../../JS/actions/contact";
 import "./Contact.css";
 const Contact = () => {
+  const dispatch = useDispatch();
+  const [message, setMessage] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    msg: "",
+  });
+  const handleChange = (e) => {
+    e.preventDefault();
+    setMessage({ ...message, [e.target.name]: e.target.value });
+  };
+  const handleContact = (e) => {
+    e.preventDefault();
+    if (
+      message.name === "" ||
+      message.email === "" ||
+      message.subject === "" ||
+      message.msg === ""
+    ) {
+      alert("you should fill all the forms");
+      setMessage({ name: "", email: "", subject: "", msg: "" });
+    } else {
+      dispatch(postContacts(message));
+      setMessage({ name: "", email: "", subject: "", msg: "" });
+    }
+  };
   return (
     <section className="hhh">
       <div className="container ">
@@ -9,7 +36,14 @@ const Contact = () => {
           <div className="col-lg-7 col-xl-7">
             <div className="section-heading center-heading">
               <span className="subheading">contact</span>
-              <h3>For more information about our courses, get in touch</h3>
+              <a
+                target="_blank"
+                href="https://www.google.com/maps/dir/?api=1&destination=36.90393979607779, 10.184254969056784"
+              >
+                <h3>
+                  For more information about our courses, Visit Us in our Local
+                </h3>
+              </a>
             </div>
           </div>
         </div>
@@ -37,23 +71,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="col-lg-8">
-            <form
-              className="contact__form form-row "
-              method="post"
-              action="mail.php"
-              id="contactForm"
-            >
-              <div className="row">
-                <div className="col-12">
-                  <div
-                    className="alert alert-success contact__msg"
-                    style={{ display: "none" }}
-                    role="alert"
-                  >
-                    Your message was sent successfully.
-                  </div>
-                </div>
-              </div>
+            <form className="contact__form form-row " id="contactForm">
               <div className="row">
                 <div className="col-lg-6">
                   <div className="form-group">
@@ -63,6 +81,8 @@ const Contact = () => {
                       name="name"
                       className="form-control"
                       placeholder="Your Name"
+                      value={message.name}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -74,6 +94,8 @@ const Contact = () => {
                       id="email"
                       className="form-control"
                       placeholder="Email Address"
+                      value={message.email}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -85,6 +107,8 @@ const Contact = () => {
                       id="subject"
                       className="form-control"
                       placeholder="Subject"
+                      value={message.subject}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -92,19 +116,27 @@ const Contact = () => {
                   <div className="form-group">
                     <textarea
                       id="message"
-                      name="message"
+                      name="msg"
                       cols={30}
                       rows={6}
                       className="form-control"
                       placeholder="Your Message"
-                      defaultValue={""}
+                      value={message.msg}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
               </div>
               <div className="col-lg-12">
                 <div className="mt-4 ">
-                  <button className="btn btn-main" type="submit">
+                  <button
+                    className="btn btn-main"
+                    type="submit"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log("hello");
+                    }}
+                  >
                     Send Message
                   </button>
                 </div>

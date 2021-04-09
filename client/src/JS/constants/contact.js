@@ -1,0 +1,1 @@
+export const SEND_CONTACTS_FAIL = "SEND_CONTACTS_FAIL";
