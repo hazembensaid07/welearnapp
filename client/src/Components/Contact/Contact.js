@@ -133,8 +133,7 @@ const Contact = () => {
                     className="btn btn-main"
                     type="submit"
                     onClick={(e) => {
-                      e.preventDefault();
-                      console.log("hello");
+                      handleContact(e);
                     }}
                   >
                     Send Message

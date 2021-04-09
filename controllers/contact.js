@@ -1,11 +1,13 @@
-const { sendEmailWithNodemailer } = require("../helpers/email");
+const sendMail = require("../helpers/contactUs.email");
 
 exports.sendMessage = (req, res) => {
-  try {
-    const msg = req.body;
-    console.log(msg);
-    res.status(200).send(msg);
-  } catch (error) {
-    res.status(400).send("can not send  it");
-  }
+  const { name, email, subject, msg } = req.body;
+  console.log("Data: ", req.body);
+  sendMail(name, email, subject, msg, function (err, data) {
+    if (err) {
+      res.status(500).json({ message: "Internal Error" });
+    } else {
+      res.status({ message: "Email sent!!!" });
+    }
+  });
 };

@@ -1,8 +1,9 @@
 const express = require("express");
+const controllers = require("../controllers/contact");
 
 // express router
 const router = express.Router();
-const controllers = require("../controllers/contact");
+/*const controllers = require("../controllers/contact");*/
 /**
  * @description : send message to support
  * @path : http://localhost:8000/api/contact
