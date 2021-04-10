@@ -23,11 +23,8 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const contactRoutes = require("./routes/contact");
 const courseRoutes = require("./routes/course");
-<<<<<<< Updated upstream
 const courseDescRoutes = require("./routes/courseDescription");
-=======
 const commentsRoutes = require("./routes/comment");
->>>>>>> Stashed changes
 // app middlewares
 app.use(morgan("dev"));
 
@@ -41,12 +38,9 @@ app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", contactRoutes);
 app.use("/api", courseRoutes);
-<<<<<<< Updated upstream
 app.use("/api", courseDescRoutes);
-=======
 app.use("/api", commentsRoutes);
 
->>>>>>> Stashed changes
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`API is running on port ${port}`);

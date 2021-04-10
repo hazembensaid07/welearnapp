@@ -14,7 +14,7 @@ import "./assets/css/responsive.css";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./JS/store/store";
+import { store } from "./JS/store/store";
 
 ReactDOM.render(
   <Router>
