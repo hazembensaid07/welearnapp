@@ -4,8 +4,6 @@ import { courseReducer } from "./course";
 
 import { commentsReducer } from "./comments";
 
-import { commentsReducer } from "./comments";
-
 export const rootReducer = combineReducers({
   contactReducer,
   courseReducer,
