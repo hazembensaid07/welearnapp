@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import handleScroll from "../scroll.js";
 const BlogSingle = () => {
+  const [comment, setComment] = useState({
+    comment: "",
+    website: "",
+    name: "",
+    email: "",
+  });
   return (
     <div>
       <div>
