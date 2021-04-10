@@ -1,8 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import courseimg from "../../assets/images/course/course1.jpg";
-import handleScroll from "../scroll.js";
-const CourseByCategory = () => {
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getCourses } from "../../JS/actions/course";
+import CourseCard from "./CourseCard";
+const CourseByCategory = ({ location }) => {
+  const category = location.state.category;
+  const courses = useSelector((state) => state.courseReducer.courses);
+  const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
+  const error = useSelector((state) => state.courseReducer.errors);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCourses(category));
+  }, [dispatch]);
   return (
     <div>
       <section className="page-header">
@@ -10,7 +20,7 @@ const CourseByCategory = () => {
           <div className="row justify-content-center">
             <div className="col-lg-8 col-xl-8">
               <div className="title-block">
-                <h1>Category Name</h1>
+                <h1>{category}</h1>
               </div>
             </div>
           </div>
@@ -39,38 +49,16 @@ const CourseByCategory = () => {
         </div>
 
         <div className="container">
-          <div className="row">
-            <div className="col-xl-4 col-lg-4">
-              <div className="course-block">
-                <div className="course-img">
-                  <img src={courseimg} alt="" className="img-fluid" />
-                  <div className="course-price2">$100</div>
-                </div>
-                <div className="course-content">
-                  <div className="course-meta">
-                    <span className="course-student">
-                      <i className="fa fa-user-alt" />
-                      340 Students
-                    </span>
-                    <span className="course-duration">
-                      <i className="far fa-file-alt" />
-                      82 Lessons
-                    </span>
-                    <span className="course-label">new</span>
-                  </div>
-                  <h4>
-                    <Link onClick={handleScroll} to="/courseDetails">
-                      React – The Complete Guide (React Router)
-                    </Link>
-                  </h4>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Quis, alias.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {loadCourses ? (
+            <h1>estenaaaaaaa</h1>
+          ) : courses.length === 0 ? (
+            <h1>no</h1>
+          ) : (
+            courses.map((course) => (
+              <CourseCard course={course} key={course._id} />
+            ))
+          )}
+
           <div className="row">
             <div className="col-lg-12">
               <nav className="post-navigation text-center">
