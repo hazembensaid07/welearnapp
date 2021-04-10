@@ -38,6 +38,7 @@ exports.getCoursesByCategory = async (req, res) => {
       res.status(400).send({ msg: "there is no this category" });
       return;
     } else {
+      /*result.filter((el) => el.name.toLowerCase().includes(name.toLowerCase()));*/
       res.send({ message: "courses found", result });
     }
   } catch (error) {
