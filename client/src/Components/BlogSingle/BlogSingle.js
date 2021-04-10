@@ -1,7 +1,32 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import handleScroll from "../scroll.js";
+import { useDispatch, useSelector } from "react-redux";
+import { getComments, sendComment } from "../../JS/actions/comments";
+
 const BlogSingle = () => {
+  const dispatch = useDispatch();
+
+  const comments = useSelector((state) => state.commentsReducer.comments);
+
+  const [comment, setComment] = useState({
+    msg: "",
+    website: "",
+    name: "",
+    email: "",
+  });
+  const [sumComments, setSumComments] = useState(0);
+
+  useEffect(() => {
+    dispatch(getComments());
+    console.log(comments);
+  }, [sumComments]);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setComment({ ...comment, [e.target.name]: e.target.value });
+  };
+
   return (
     <div>
       <div>
@@ -248,12 +273,14 @@ const BlogSingle = () => {
                           <div className="form-group">
                             <textarea
                               name="msg"
+                              value={comment.msg}
                               id="msgt"
                               cols={30}
                               rows={6}
                               placeholder="Comment"
                               className="form-control"
                               defaultValue={""}
+                              onChange={handleChange}
                             />
                           </div>
                         </div>
@@ -263,6 +290,9 @@ const BlogSingle = () => {
                               type="text"
                               className="form-control"
                               placeholder="Website"
+                              name="website"
+                              value={comment.website}
+                              onChange={handleChange}
                             />
                           </div>
                         </div>
@@ -272,6 +302,9 @@ const BlogSingle = () => {
                               type="text"
                               className="form-control"
                               placeholder="Name"
+                              name="name"
+                              value={comment.name}
+                              onChange={handleChange}
                             />
                           </div>
                         </div>
@@ -281,14 +314,25 @@ const BlogSingle = () => {
                               type="text"
                               className="form-control"
                               placeholder="Email"
+                              name="email"
+                              value={comment.email}
+                              onChange={handleChange}
                             />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <a href="#" className="btn btn-main">
-                              Comment
-                            </a>
+                            <button
+                              onChange={() => {
+                                console.log(comment);
+                                setSumComments(sumComments + 1);
+                                dispatch(sendComment(comment));
+                              }}
+                            >
+                              <a href="#" className="btn btn-main">
+                                Comment
+                              </a>
+                            </button>
                           </div>
                         </div>
                       </div>
