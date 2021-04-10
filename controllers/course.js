@@ -31,14 +31,16 @@ exports.addCourse = async (req, res) => {
 };
 exports.getCoursesByCategory = async (req, res) => {
   try {
-    const { category } = req.params;
-    const result = await Course.find({ category });
+    const { category, name } = req.query.params;
+    console.log(name);
+    console.log(category);
+    const result = await Course.find(req.query);
     console.log(result);
     if (result.length === 0) {
       res.status(400).send({ msg: "there is no this category" });
       return;
     } else {
-      /*result.filter((el) => el.name.toLowerCase().includes(name.toLowerCase()));*/
+      result.filter((el) => el.name.toLowerCase().includes(name.toLowerCase()));
       res.send({ message: "courses found", result });
     }
   } catch (error) {

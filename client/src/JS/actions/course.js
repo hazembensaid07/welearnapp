@@ -5,12 +5,15 @@ import {
   GET_COURSE_BY_ID,
   GET_COURSES_BY_CATEGORY,
 } from "../constants/course";
-export const getCourses = (category) => async (dispatch) => {
+export const getCourses = (category, name) => async (dispatch) => {
   dispatch({ type: GET_COURSES_LOAD });
   try {
-    const res = await axios.get(
-      `http://localhost:8000/api/coursesbycategory/${category}`
-    );
+    const res = await axios.get(`http://localhost:8000/api/coursesbycategory`, {
+      params: {
+        name,
+        category,
+      },
+    });
 
     dispatch({
       type: GET_COURSES_BY_CATEGORY,

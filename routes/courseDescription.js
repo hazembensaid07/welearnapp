@@ -3,5 +3,5 @@ const controllers = require("../controllers/course");
 
 // express router
 const router = express.Router();
-router.get("/coursesbycategory/:category", controllers.getCoursesByCategory);
+router.get("/coursesbycategory/", controllers.getCoursesByCategory);
 module.exports = router;
