@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getCourses } from "../../JS/actions/course";
@@ -7,12 +7,12 @@ const CourseByCategory = ({ location }) => {
   const category = location.state.category;
   const courses = useSelector((state) => state.courseReducer.courses);
   const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
-  const error = useSelector((state) => state.courseReducer.errors);
+  const [name, setName] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCourses(category));
-  }, [dispatch]);
+    dispatch(getCourses(category, name));
+  }, [name]);
   return (
     <div>
       <section className="page-header">
@@ -32,16 +32,15 @@ const CourseByCategory = ({ location }) => {
             <div className="row align-items-center">
               <div className="col-lg-4">
                 <div className="topbar-search">
-                  <form method="get" action="#">
-                    <input
-                      type="text"
-                      placeholder="Search our courses"
-                      className="form-control"
-                    />
-                    <label>
-                      <i className="fa fa-search" />
-                    </label>
-                  </form>
+                  <input
+                    type="text"
+                    placeholder="Search our courses"
+                    className="form-control"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <label>
+                    <i className="fa fa-search" />
+                  </label>
                 </div>
               </div>
             </div>

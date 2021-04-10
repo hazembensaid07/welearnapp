@@ -1,12 +1,17 @@
-import React from "react";
-import img1 from "../../assets/images/course/course1.jpg";
-import author from "../../assets/images/blog/author.jpg";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import course1 from "../../assets/images/course/course-sm1.jpg";
-import course2 from "../../assets/images/course/course-sm2.jpg";
-import course3 from "../../assets/images/course/course-sm3.jpg";
+import { getCourseById } from "../../JS/actions/course";
 
-const CourseDetails = () => {
+const CourseDetails = ({ location }) => {
+  const dispatch = useDispatch();
+  const id = location.state.id;
+  const course = useSelector((state) => state.courseReducer.course);
+  const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
+  useEffect(() => {
+    dispatch(getCourseById(id));
+  }, [dispatch]);
+
   return (
     <div>
       <div>
@@ -16,12 +21,6 @@ const CourseDetails = () => {
               <div className="col-lg-8 col-xl-8">
                 <div className="title-block">
                   <h1>Mastering PHP from zero to hero</h1>
-                  <ul className="list-inline mb-0">
-                    <li className="list-inline-item">/</li>
-                    <li className="list-inline-item">
-                      Mastering PHP from zero to hero
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
