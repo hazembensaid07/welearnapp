@@ -7,9 +7,10 @@ import { getComments, sendComment } from "../../JS/actions/comments";
 
 const BlogSingle = () => {
   const dispatch = useDispatch();
-
   const comments = useSelector((state) => state.commentsReducer.comments);
-
+  const loadComments = useSelector(
+    (state) => state.commentsReducer.loadComments
+  );
   const [comment, setComment] = useState({
     msg: "",
     website: "",
@@ -197,71 +198,13 @@ const BlogSingle = () => {
                       </ul>
                     </div>
                   </div>
-                  <div className="comments">
-                    <h3 className="commment-title">2 Comments</h3>
-                    <div className="media">
-                      <img
-                        src="assets/images/blog/user.jpg"
-                        className="mr-3"
-                        alt="..."
-                      />
-                      <div className="media-body">
-                        <h5 className="mt-0">
-                          Harish John <span>17 Feb 2020</span>{" "}
-                          <a className="reply-link" href="#">
-                            <i className="fas fa-reply-all" />
-                            Reply
-                          </a>
-                        </h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                        metus scelerisque ante sollicitudin. Fusce condimentum
-                        nunc ac nisi vulputate fringilla. Donec lacinia congue
-                        felis in faucibus.
-                        <div className="media">
-                          <a className="mr-3" href="#">
-                            <img
-                              src="assets/images/blog/user.jpg"
-                              className="mr-3"
-                              alt="..."
-                            />
-                          </a>
-                          <div className="media-body">
-                            <h5 className="mt-0">
-                              Harish John <span>17 Feb 2020</span>{" "}
-                              <a className="reply-link" href="#">
-                                <i className="fas fa-reply-all" />
-                                Reply
-                              </a>
-                            </h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla
-                            vel metus scelerisque ante sollicitudin. Cras purus
-                            odio, vestibulum in vulputate at, tempus viverra
-                            turpis.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="media">
-                      <img
-                        src="assets/images/blog/user.jpg"
-                        className="mr-3"
-                        alt="..."
-                      />
-                      <div className="media-body">
-                        <h5 className="mt-0">
-                          Harish John <span>17 Feb 2020</span>{" "}
-                          <a className="reply-link" href="#">
-                            <i className="fas fa-reply-all" />
-                            Reply
-                          </a>
-                        </h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                        metus scelerisque ante sollicitudin. Fusce condimentum
-                        nunc ac nisi vulputate fringilla. Donec lacinia congue
-                        felis in faucibus.
-                      </div>
-                    </div>
-                  </div>
+                  {loadComments ? (
+                    <h2>loading</h2>
+                  ) : comments.length == 0 ? (
+                    <h2>there is no data show</h2>
+                  ) : (
+                    comments.map((el) => <Comment key={el._id} comment={el} />)
+                  )}
                   <div className="comments-form p-lg-5 mt-4 ">
                     <h3>Leave a comment </h3>
                     <p>
@@ -324,7 +267,7 @@ const BlogSingle = () => {
                         <div className="col-lg-12">
                           <div className="form-group">
                             <button
-                              onChange={() => {
+                              onClick={() => {
                                 console.log(comment);
                                 setSumComments(sumComments + 1);
                                 dispatch(sendComment(comment));
