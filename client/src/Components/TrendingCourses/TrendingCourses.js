@@ -1,7 +1,15 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import courseimg from "../../assets/images/course/course1.jpg";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getCourses } from "../../JS/actions/course";
 const TrendingCourses = () => {
+  const courses = useSelector((state) => state.courseReducer.courses);
+  const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
+
+  const dispatch = useDispatch();
+
   return (
     <div>
       <section className="section-padding course-grid bg-gray">

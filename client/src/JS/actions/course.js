@@ -24,7 +24,7 @@ export const getCourses = (category) => async (dispatch) => {
     console.log(error);
   }
 };
-export const getCoursesById = (id) => async (dispatch) => {
+export const getCourseById = (id) => async (dispatch) => {
   dispatch({ type: GET_COURSES_LOAD });
   try {
     const res = await axios.get(`http://localhost:8000/api/course/${id}`);

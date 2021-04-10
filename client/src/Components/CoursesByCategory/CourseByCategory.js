@@ -7,7 +7,7 @@ const CourseByCategory = ({ location }) => {
   const category = location.state.category;
   const courses = useSelector((state) => state.courseReducer.courses);
   const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
-  const error = useSelector((state) => state.courseReducer.errors);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

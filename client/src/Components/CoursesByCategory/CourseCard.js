@@ -25,7 +25,13 @@ const CourseCard = ({ course }) => {
                 <span className="course-label">new</span>
               </div>
               <h4>
-                <Link onClick={handleScroll} to="/courseDetails">
+                <Link
+                  onClick={handleScroll}
+                  to={{
+                    pathname: `/courseDetails`,
+                    state: { _id: course._id },
+                  }}
+                >
                   {course.name}
                 </Link>
               </h4>
