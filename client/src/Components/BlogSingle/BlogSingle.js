@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import handleScroll from "../scroll.js";
 import { useDispatch, useSelector } from "react-redux";
 import { getComments, sendComment } from "../../JS/actions/comments";
+import Comment from "./Comment.js";
 
 const BlogSingle = () => {
   const dispatch = useDispatch();
@@ -11,18 +12,19 @@ const BlogSingle = () => {
   const loadComments = useSelector(
     (state) => state.commentsReducer.loadComments
   );
+  const sumComments = useSelector((state) => state.commentsReducer.sumComments);
   const [comment, setComment] = useState({
     msg: "",
     website: "",
     name: "",
     email: "",
   });
-  const [sumComments, setSumComments] = useState(0);
 
   useEffect(() => {
     dispatch(getComments());
     console.log(comments);
-  }, [sumComments]);
+    console.log(sumComments);
+  }, []);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -198,13 +200,22 @@ const BlogSingle = () => {
                       </ul>
                     </div>
                   </div>
-                  {loadComments ? (
-                    <h2>loading</h2>
-                  ) : comments.length == 0 ? (
-                    <h2>there is no data show</h2>
-                  ) : (
-                    comments.map((el) => <Comment key={el._id} comment={el} />)
-                  )}
+                  <div className="comments">
+                    <h3 className="commment-title">{sumComments} Comments</h3>
+                    {loadComments ? (
+                      <h2>loading</h2>
+                    ) : comments.length == 0 ? (
+                      <h2>there is no data show</h2>
+                    ) : (
+                      comments.map((el) => (
+                        <Comment
+                          key={el._id}
+                          comment={el}
+                          number={sumComments}
+                        />
+                      ))
+                    )}
+                  </div>
                   <div className="comments-form p-lg-5 mt-4 ">
                     <h3>Leave a comment </h3>
                     <p>
@@ -268,9 +279,13 @@ const BlogSingle = () => {
                           <div className="form-group">
                             <button
                               onClick={() => {
-                                console.log(comment);
-                                setSumComments(sumComments + 1);
                                 dispatch(sendComment(comment));
+                                setComment({
+                                  name: "",
+                                  email: "",
+                                  website: "",
+                                  msg: "",
+                                });
                               }}
                             >
                               <a href="#" className="btn btn-main">
