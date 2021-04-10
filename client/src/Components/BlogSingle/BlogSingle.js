@@ -6,27 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getComments, sendComment } from "../../JS/actions/comments";
 
 const BlogSingle = () => {
-<<<<<<< HEAD
   const dispatch = useDispatch();
-
   const comments = useSelector((state) => state.commentsReducer.comments);
-
   const [comment, setComment] = useState({
     msg: "",
-=======
-  const [comment, setComment] = useState({
-    comment: "",
->>>>>>> e1de38dc9391255995bcd38a013b8576e74fdcd2
     website: "",
     name: "",
     email: "",
   });
-<<<<<<< HEAD
   const [sumComments, setSumComments] = useState(0);
 
   useEffect(() => {
     dispatch(getComments());
-    console.log(comments);
   }, [sumComments]);
 
   const handleChange = (e) => {
@@ -34,8 +25,6 @@ const BlogSingle = () => {
     setComment({ ...comment, [e.target.name]: e.target.value });
   };
 
-=======
->>>>>>> e1de38dc9391255995bcd38a013b8576e74fdcd2
   return (
     <div>
       <div>
@@ -332,7 +321,7 @@ const BlogSingle = () => {
                         <div className="col-lg-12">
                           <div className="form-group">
                             <button
-                              onChange={() => {
+                              onClick={() => {
                                 console.log(comment);
                                 setSumComments(sumComments + 1);
                                 dispatch(sendComment(comment));
