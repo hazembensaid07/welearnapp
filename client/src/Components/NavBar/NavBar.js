@@ -60,13 +60,32 @@ const NavBar = () => {
                     <i className="fa fa-angle-down" />
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbar3">
-                    <Link to="/courses" className="dropdown-item ">
+                    <Link
+                      to={{
+                        pathname: `/courses`,
+                        state: { category: "web development" },
+                      }}
+                      className="dropdown-item "
+                    >
                       Web Development
                     </Link>
-                    <Link to="/courses" className="dropdown-item ">
+                    <Link
+                      t
+                      to={{
+                        pathname: `/courses`,
+                        state: { category: "mobile development" },
+                      }}
+                      className="dropdown-item "
+                    >
                       Mobile Development
                     </Link>
-                    <Link to="/courses" className="dropdown-item ">
+                    <Link
+                      to={{
+                        pathname: `/courses`,
+                        state: { category: "game development" },
+                      }}
+                      className="dropdown-item "
+                    >
                       Game Development
                     </Link>
                   </div>

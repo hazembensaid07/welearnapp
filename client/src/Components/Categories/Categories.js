@@ -23,7 +23,13 @@ const Categories = () => {
 
                 <div class="course-content">
                   <h4>
-                    <Link onClick={handleScroll} to="/courses">
+                    <Link
+                      onClick={handleScroll}
+                      to={{
+                        pathname: `/courses`,
+                        state: { category: "web development" },
+                      }}
+                    >
                       Web Development{" "}
                     </Link>
                   </h4>
@@ -39,7 +45,13 @@ const Categories = () => {
 
                 <div class="course-content">
                   <h4>
-                    <Link onClick={handleScroll} to="/courses">
+                    <Link
+                      onClick={handleScroll}
+                      to={{
+                        pathname: `/courses`,
+                        state: { category: "mobile development " },
+                      }}
+                    >
                       Mobile Development{" "}
                     </Link>
                   </h4>
@@ -55,7 +67,13 @@ const Categories = () => {
 
                 <div class="course-content">
                   <h4>
-                    <Link onClick={handleScroll} to="/courses">
+                    <Link
+                      onClick={handleScroll}
+                      to={{
+                        pathname: `/courses`,
+                        state: { category: "game development" },
+                      }}
+                    >
                       Game Development{" "}
                     </Link>
                   </h4>

@@ -2,7 +2,7 @@ const Course = require("../models/course");
 exports.addCourse = async (req, res) => {
   try {
     const newCourse = new Course(req.body);
-    console.log(newCourse);
+
     if (
       req.body.name === "" ||
       req.body.overview === "" ||
@@ -17,7 +17,6 @@ exports.addCourse = async (req, res) => {
       req.body.lessons === "" ||
       req.body.category === ""
     ) {
-      console.log(newCourse);
       res.status(400).send({
         message: "you should fill all the forms",
       });
@@ -32,14 +31,14 @@ exports.addCourse = async (req, res) => {
 };
 exports.getCoursesByCategory = async (req, res) => {
   try {
-    const { category } = req.body;
+    const { category } = req.params;
     const result = await Course.find({ category });
     console.log(result);
     if (result.length === 0) {
       res.status(400).send({ msg: "there is no this category" });
       return;
     } else {
-      res.send({ message: "courses found " });
+      res.send({ message: "courses found", result });
     }
   } catch (error) {
     res.status(400).send({ message: "There is no courses with this category" });
@@ -47,14 +46,14 @@ exports.getCoursesByCategory = async (req, res) => {
 };
 exports.getCourseById = async (req, res) => {
   try {
-    const { _id } = req.body;
+    const { _id } = req.params;
     const result = await Course.findOne({ _id });
     console.log(result);
     if (!result) {
-      res.status(400).send({ msg: "there is no course" });
+      res.status(400).send({ msg: "there " });
       return;
     } else {
-      res.send({ message: "course found " });
+      res.send({ message: "course found ", result });
     }
   } catch (error) {
     res.status(400).send({ message: "There is no course" });

@@ -3,8 +3,5 @@ const controllers = require("../controllers/course");
 
 // express router
 const router = express.Router();
-
-router.post("/course", controllers.addCourse);
-
-router.get("/course/:id", controllers.getCourseById);
+router.get("/coursesbycategory/:category", controllers.getCoursesByCategory);
 module.exports = router;
