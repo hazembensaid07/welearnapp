@@ -20,7 +20,7 @@ const CourseDetails = ({ location }) => {
             <div className="row justify-content-center">
               <div className="col-lg-8 col-xl-8">
                 <div className="title-block">
-                  <h1>Mastering PHP from zero to hero</h1>
+                  <h1>{course.name}</h1>
                 </div>
               </div>
             </div>
@@ -50,19 +50,7 @@ const CourseDetails = ({ location }) => {
                   >
                     <div className="single-course-details ">
                       <h4 className="course-title">Overview</h4>
-                      <p>
-                        Knowing PHP has allowed me to make enough money to stay
-                        home and make courses like this one for students all
-                        over the world. Being a PHP developer can allow anyone
-                        to make really good money online and offline, developing
-                        dynamic applications. Knowing PHP will allow you to
-                        build web applications, websites or Content Management
-                        systems, like WordPress, Facebook, Twitter or even
-                        Google. There is no limit to what you can do with this
-                        knowledge. PHP is one of the most important web
-                        programming languages to learn, and knowing it, will
-                        give you SUPER POWERS in the web
-                      </p>
+                      <p>{course.overview}</p>
                       <div className="course-widget course-info">
                         <h4 className="course-title">What You will Learn?</h4>
                         <ul>
@@ -292,29 +280,6 @@ const CourseDetails = ({ location }) => {
                         Enroll Course
                       </button>
                     </div>
-                  </div>
-                  <div className="course-latest">
-                    <h4>Popular Courses</h4>
-                    <ul className="recent-posts course-popular">
-                      <li>
-                        <div className="widget-post-thumb">
-                          <a href="#">
-                            <img
-                              src="assets/images/course/course-sm1.jpg"
-                              alt=""
-                              className="img-fluid"
-                            />
-                          </a>
-                        </div>
-                        <div className="widget-post-body">
-                          <h6>
-                            {" "}
-                            <a href="#">Wordpress Theme Development</a>
-                          </h6>
-                          <h5>$120</h5>
-                        </div>
-                      </li>
-                    </ul>
                   </div>
                 </div>
                 {/* Course Sidebar end */}
