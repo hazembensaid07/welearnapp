@@ -1,7 +1,8 @@
 exports.addArticle = async (req, res) => {
   try {
-    const newContact = new article(req.body);
-    const response = await newContact.save();
+    const newArticle = new article(req.body);
+    const response = await newArticle.save();
+    console.log(response);
     res.status(200).send(response);
   } catch (error) {
     res.status(400).send("can not save the article");
@@ -10,7 +11,7 @@ exports.addArticle = async (req, res) => {
 
 exports.getAllArticles = async (req, res) => {
   try {
-    const result = await Contact.find();
+    const result = await article.find();
     res.send({ response: result, message: "Articles found" });
   } catch (error) {
     res.status(400).send({ message: "can not get the articles" });

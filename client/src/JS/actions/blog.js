@@ -9,7 +9,8 @@ import axios from "axios";
 export const getBlog = () => async (dispatch) => {
   dispatch({ type: GET_BLOG_LOAD });
   try {
-    let result = await axios.get("http://localhost:8000/blog");
+    let result = await axios.get("http://localhost:8000/api/blog");
+    console.log(result);
     dispatch({ type: GET_BLOG_SUCCESS, payload: result.data.response });
   } catch (error) {
     dispatch({ type: GET_BLOG_FAIL, payload: error });
@@ -19,7 +20,7 @@ export const getBlog = () => async (dispatch) => {
 
 export const addArticle = (article) => async (dispatch) => {
   try {
-    const result = await axios.post("http://localhost:8000/blog", article);
+    const result = await axios.post("http://localhost:8000/api/blog", article);
     dispatch(getBlog());
   } catch (error) {
     dispatch({ type: GET_BLOG_FAIL, payload: error });

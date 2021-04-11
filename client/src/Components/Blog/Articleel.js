@@ -16,25 +16,28 @@ const Articleel = ({ article }) => {
         <div className="post-item mt-4">
           <div className="post-meta">
             <span className="post-author">
-              Written by <a href="#">Admin</a>
+              Written by <a href="#">{article.writer}</a>
             </span>
             <span className="post-date">
               <i className="fa fa-calendar-alt mr-2" />
-              March 15, 2021
+              {article.date}
             </span>
           </div>
           <h2 className="post-title">
-            <Link onClick={handleScroll} to="/blogEl">
-              How to become a best sale marketer in a month!
+            <Link
+              onClick={handleScroll}
+              className="read-more"
+              to={{
+                pathname: `/blogEl`,
+                state: { article: article },
+              }}
+            >
+              {article.title}
             </Link>
           </h2>
           <div className="post-content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima,
-              aliquam, aliquid. Eos eum, illo autem unde consequatur, obcaecati
-              quam voluptatem repellat consequuntur repellendus delectus
-              voluptas architecto, quos amet hic aliquid!
-            </p>
+            <p>{article.description}</p>
+
             <Link
               onClick={handleScroll}
               className="read-more"
