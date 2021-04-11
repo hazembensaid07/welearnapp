@@ -12,6 +12,7 @@ const CourseByCategory = ({ location }) => {
 
   useEffect(() => {
     dispatch(getCourses(category, name));
+    console.log(courses);
   }, [name]);
   return (
     <div>

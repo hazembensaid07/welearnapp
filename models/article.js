@@ -4,27 +4,19 @@ const mongoose = require("mongoose");
 // create Contact schema
 const schema = mongoose.Schema;
 
-const commentsSchema = new schema({
-  name: {
+const articleSchema = new schema({
+  writer: {
     type: String,
     required: true,
   },
-  email: {
+  title: {
     type: String,
     required: true,
   },
-  website: {
+  information: {
     type: String,
     required: false,
   },
-  msg: {
-    type: String,
-    required: true,
-  },
-  articleID: {
-    type: String,
-    required: true,
-  },
 });
 
-module.exports = comments = mongoose.model("comments", commentsSchema);
+module.exports = article = mongoose.model("article", articleSchema);
