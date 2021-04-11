@@ -5,6 +5,7 @@ import handleScroll from "../scroll.js";
 const CourseCard = ({ course }) => {
   return (
     <div>
+      {console.log(course)}
       <div className="row">
         <div className="col-xl-4 col-lg-4">
           <div className="course-block">

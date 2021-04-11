@@ -5,7 +5,7 @@ import { getCourseById } from "../../JS/actions/course";
 
 const CourseDetails = ({ location }) => {
   const dispatch = useDispatch();
-  const id = location.state.id;
+  const id = location.state._id;
   const course = useSelector((state) => state.courseReducer.course);
   const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
   useEffect(() => {
@@ -51,37 +51,6 @@ const CourseDetails = ({ location }) => {
                     <div className="single-course-details ">
                       <h4 className="course-title">Overview</h4>
                       <p>{course.overview}</p>
-                      <div className="course-widget course-info">
-                        <h4 className="course-title">What You will Learn?</h4>
-                        <ul>
-                          <li>
-                            <i className="fa fa-check" />
-                            Clean up face imperfections, improve and repair
-                            photos
-                          </li>
-                          <li>
-                            <i className="fa fa-check" />
-                            Remove people or objects from photos
-                          </li>
-                          <li>
-                            <i className="fa fa-check" />
-                            Master selections, layers, and working with the
-                            layers panel
-                          </li>
-                          <li>
-                            <i className="fa fa-check" />
-                            Use creative effects to design stunning text styles
-                          </li>
-                          <li>
-                            <i className="fa fa-check" />
-                            working with the layers panel
-                          </li>
-                          <li>
-                            <i className="fa fa-check" />
-                            Cut away a person from their background
-                          </li>
-                        </ul>
-                      </div>
                     </div>
                   </div>
 
@@ -287,7 +256,6 @@ const CourseDetails = ({ location }) => {
             </div>
           </div>
         </section>
-        {/* Related Course section start */}
       </div>
     </div>
   );

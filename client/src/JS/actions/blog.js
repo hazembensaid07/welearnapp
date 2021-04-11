@@ -2,6 +2,7 @@ import {
   GET_BLOG_LOAD,
   GET_BLOG_SUCCESS,
   GET_BLOG_FAIL,
+  ADD_SUM,
 } from "../constants/blog";
 import axios from "axios";
 

@@ -50,9 +50,9 @@ const CourseByCategory = ({ location }) => {
 
         <div className="container">
           {loadCourses ? (
-            <h1>estenaaaaaaa</h1>
+            <h1>please wait loading</h1>
           ) : courses.length === 0 ? (
-            <h1>no</h1>
+            <h1>There is no course in this category</h1>
           ) : (
             courses.map((course) => (
               <CourseCard course={course} key={course._id} />
