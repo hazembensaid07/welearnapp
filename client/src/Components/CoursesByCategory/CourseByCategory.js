@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import scroll from "../scroll";
 
 import { getCourses } from "../../JS/actions/course";
 import CourseCard from "./CourseCard";
 const CourseByCategory = ({ location }) => {
+  const [pageNumber, setPageNumber] = useState(0);
+  const numberOfpages = useSelector((state) => state.courseReducer.totalPages);
+
+  const pages = new Array(numberOfpages).fill(null).map((v, i) => i);
   const category = location.state.category;
   const courses = useSelector((state) => state.courseReducer.courses);
   const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
   const [name, setName] = useState("");
   const dispatch = useDispatch();
+  const gotoPrevious = () => {
+    setPageNumber(Math.max(0, pageNumber - 1));
+  };
+
+  const gotoNext = () => {
+    setPageNumber(Math.min(numberOfpages - 1, pageNumber + 1));
+  };
 
   useEffect(() => {
-    dispatch(getCourses(category, name));
+    dispatch(getCourses(category, name, pageNumber));
     console.log(courses);
-  }, [name]);
+    console.log(pageNumber);
+  }, [name, pageNumber]);
   return (
     <div>
       <section className="page-header">
@@ -58,35 +71,30 @@ const CourseByCategory = ({ location }) => {
               <CourseCard course={course} key={course._id} />
             ))
           )}
-
-          <div className="row">
-            <div className="col-lg-12">
-              <nav className="post-navigation text-center">
-                <ul>
-                  <li className="page-num active" aria-current="page">
-                    <span className="page-url">
-                      1<span className="sr-only">(current)</span>
-                    </span>
-                  </li>
-                  <li className="page-num">
-                    <a className="page-url" href="#">
-                      2
-                    </a>
-                  </li>
-                  <li className="page-num">
-                    <a className="page-url" href="#">
-                      3
-                    </a>
-                  </li>
-                  <li className="page-num">
-                    <a className="page-url" href="#">
-                      <i className="fa fa-angle-right" />
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+          <button
+            onClick={() => {
+              gotoPrevious();
+            }}
+          >
+            Previous
+          </button>
+          {pages.map((pageIndex) => (
+            <button
+              key={pageIndex}
+              onClick={() => {
+                setPageNumber(pageIndex);
+              }}
+            >
+              {pageIndex + 1}
+            </button>
+          ))}
+          <button
+            onClick={() => {
+              gotoNext();
+            }}
+          >
+            Next
+          </button>
         </div>
       </section>
     </div>

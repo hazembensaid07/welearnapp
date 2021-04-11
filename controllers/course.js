@@ -31,6 +31,9 @@ exports.addCourse = async (req, res) => {
 };
 
 exports.getCoursesByCategory = async (req, res) => {
+  const PAGE_SIZE = 1;
+  const page = parseInt(req.query.page || "0");
+  const total = await Course.countDocuments({});
   const query = {};
   if (req.query.search) {
     query.name = {
@@ -45,12 +48,18 @@ exports.getCoursesByCategory = async (req, res) => {
   }
 
   try {
-    const result = await Course.find(query);
+    const result = await Course.find(query)
+      .limit(PAGE_SIZE)
+      .skip(PAGE_SIZE * page);
 
     if (result.length === 0) {
       res.status(400).send({ msg: "there is no this category" });
     } else {
-      res.send({ message: "courses found", result });
+      res.send({
+        message: "courses found",
+        result,
+        totalPages: Math.ceil(total / PAGE_SIZE),
+      });
     }
   } catch (error) {
     res.status(402).send({ message: "There is no courses with this category" });

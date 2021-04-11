@@ -11,6 +11,7 @@ const initState = {
   errors: [],
   msg: "",
   course: {},
+  totalPages: 0,
 };
 
 export const courseReducer = (state = initState, { type, payload }) => {
@@ -23,8 +24,8 @@ export const courseReducer = (state = initState, { type, payload }) => {
     case GET_COURSES_BY_CATEGORY:
       return {
         ...state,
-        courses: payload,
-
+        courses: payload.courses,
+        totalPages: payload.pages,
         loadCourses: false,
         errors: [],
       };
