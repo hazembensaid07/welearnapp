@@ -6,7 +6,7 @@ import handleScroll from "../scroll.js";
 import Comment from "./Comment.js";
 
 const BlogSingle = ({ location }) => {
-  const article = location.state.article;
+  const [article, setArticle] = useState(location.state.article);
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.commentsReducer.comments);
   const loadComments = useSelector(
@@ -23,7 +23,7 @@ const BlogSingle = ({ location }) => {
 
   useEffect(() => {
     dispatch(getComments(comment.articleID));
-  }, []);
+  }, [comment]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -217,7 +217,7 @@ const BlogSingle = ({ location }) => {
                       Your email address will not be published. Required fields
                       are marked *
                     </p>
-                    <form action="#" className="comment_form">
+                    <form className="comment_form">
                       <div className="row form-row">
                         <div className="col-lg-12">
                           <div className="form-group">
@@ -284,9 +284,7 @@ const BlogSingle = ({ location }) => {
                                 });
                               }}
                             >
-                              <a href="#" className="btn btn-main">
-                                Comment
-                              </a>
+                              Comment
                             </button>
                           </div>
                         </div>
