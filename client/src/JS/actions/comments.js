@@ -10,6 +10,7 @@ export const getComments = (id) => async (dispatch) => {
   dispatch({ type: GET_COMMENTS_LOAD });
   try {
     let result = await axios.get(`http://localhost:8000/api/comments?id=${id}`);
+    console.log(result);
     dispatch({ type: GET_COMMENTS_SUCCESS, payload: result.data.response });
   } catch (error) {
     dispatch({ type: GET_COMMENTS_FAIL, payload: error });
@@ -23,8 +24,8 @@ export const sendComment = (comment) => async (dispatch) => {
       "http://localhost:8000/api/comments",
       comment
     );
-    dispatch(getComments());
-    dispatch(addSumComment());
+    console.log(result);
+    dispatch(getComments(comment.articleID));
   } catch (error) {
     dispatch({ type: GET_COMMENTS_FAIL, payload: error });
   }

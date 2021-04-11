@@ -23,7 +23,7 @@ const BlogSingle = ({ location }) => {
 
   useEffect(() => {
     dispatch(getComments(comment.articleID));
-  }, [comment]);
+  }, []);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -200,6 +200,7 @@ const BlogSingle = ({ location }) => {
                     </div>
                   </div>
                   <div className="comments">
+                    {console.log(comments)}
                     <h3 className="commment-title">Comments</h3>
                     {loadComments ? (
                       <h2>loading</h2>
@@ -273,7 +274,8 @@ const BlogSingle = ({ location }) => {
                         <div className="col-lg-12">
                           <div className="form-group">
                             <button
-                              onClick={() => {
+                              onClick={(e) => {
+                                e.preventDefault();
                                 dispatch(sendComment(comment));
 
                                 setComment({
