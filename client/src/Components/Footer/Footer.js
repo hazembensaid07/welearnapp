@@ -67,17 +67,35 @@ const Footer = () => {
                     <h5 className="widget-title text-gray">Categories</h5>
                     <ul className="list-unstyled footer-links">
                       <li>
-                        <Link onClick={handleScroll} to="/courses">
+                        <Link
+                          onClick={handleScroll}
+                          to={{
+                            pathname: `/courses`,
+                            state: { category: "web development" },
+                          }}
+                        >
                           Web Development{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={handleScroll} to="/courses">
+                        <Link
+                          onClick={handleScroll}
+                          to={{
+                            pathname: `/courses`,
+                            state: { category: "mobile development " },
+                          }}
+                        >
                           Mobile Development{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link onClick={handleScroll} to="/courses">
+                        <Link
+                          onClick={handleScroll}
+                          to={{
+                            pathname: `/courses`,
+                            state: { category: "game development " },
+                          }}
+                        >
                           Game Development{" "}
                         </Link>
                       </li>
