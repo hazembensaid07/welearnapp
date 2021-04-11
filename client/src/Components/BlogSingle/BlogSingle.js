@@ -6,7 +6,7 @@ import handleScroll from "../scroll.js";
 import Comment from "./Comment.js";
 
 const BlogSingle = ({ location }) => {
-  const article = location.state.article;
+  const [article, setArticle] = useState(location.state.article);
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.commentsReducer.comments);
   const loadComments = useSelector(
@@ -200,6 +200,7 @@ const BlogSingle = ({ location }) => {
                     </div>
                   </div>
                   <div className="comments">
+                    {console.log(comments)}
                     <h3 className="commment-title">Comments</h3>
                     {loadComments ? (
                       <h2>loading</h2>
@@ -217,7 +218,7 @@ const BlogSingle = ({ location }) => {
                       Your email address will not be published. Required fields
                       are marked *
                     </p>
-                    <form action="#" className="comment_form">
+                    <form className="comment_form">
                       <div className="row form-row">
                         <div className="col-lg-12">
                           <div className="form-group">
@@ -273,7 +274,8 @@ const BlogSingle = ({ location }) => {
                         <div className="col-lg-12">
                           <div className="form-group">
                             <button
-                              onClick={() => {
+                              onClick={(e) => {
+                                e.preventDefault();
                                 dispatch(sendComment(comment));
 
                                 setComment({
@@ -284,9 +286,7 @@ const BlogSingle = ({ location }) => {
                                 });
                               }}
                             >
-                              <a href="#" className="btn btn-main">
-                                Comment
-                              </a>
+                              Comment
                             </button>
                           </div>
                         </div>
