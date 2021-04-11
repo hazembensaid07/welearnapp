@@ -6,10 +6,10 @@ import {
 } from "../constants/comments";
 import axios from "axios";
 
-export const getComments = () => async (dispatch) => {
+export const getComments = (id) => async (dispatch) => {
   dispatch({ type: GET_COMMENTS_LOAD });
   try {
-    let result = await axios.get("http://localhost:8000/api/comments");
+    let result = await axios.get(`http://localhost:8000/api/comments?id=${id}`);
     dispatch({ type: GET_COMMENTS_SUCCESS, payload: result.data.response });
   } catch (error) {
     dispatch({ type: GET_COMMENTS_FAIL, payload: error });

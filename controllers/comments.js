@@ -1,3 +1,4 @@
+const { query } = require("express-validator");
 const comments = require("../models/comments");
 
 exports.sendComment = async (req, res) => {
@@ -16,8 +17,12 @@ exports.sendComment = async (req, res) => {
 };
 
 exports.getAllComments = async (req, res) => {
+  const query = {};
+  if (req.query.id) {
+    query.id = req.query.id;
+  }
   try {
-    const result = await comments.find();
+    const result = await comments.find(query);
     res.send({ response: result, message: "Comments found" });
   } catch (error) {
     res.status(400).send({ message: "can not get comments" });

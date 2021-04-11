@@ -8,12 +8,9 @@ import {
 export const getCourses = (category, name) => async (dispatch) => {
   dispatch({ type: GET_COURSES_LOAD });
   try {
-    const res = await axios.get(`http://localhost:8000/api/coursesbycategory`, {
-      params: {
-        name,
-        category,
-      },
-    });
+    const res = await axios.get(
+      `http://localhost:8000/api/course?category=${category}&search=${name}`
+    );
 
     dispatch({
       type: GET_COURSES_BY_CATEGORY,

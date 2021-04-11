@@ -1,7 +1,18 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import Articleel from "./Articleel";
+
+import { useDispatch, useSelector } from "react-redux";
+import { getBlog } from "../../JS/actions/blog";
 import { Link } from "react-router-dom";
 import handleScroll from "../scroll.js";
 const Blog = () => {
+  const dispatch = useDispatch();
+  const blog = useSelector((state) => state.blogReducer.blog);
+  const loadBlog = useSelector((state) => state.blogReducer.loadBlog);
+
+  useEffect(() => {
+    dispatch(getBlog());
+  }, []);
   return (
     <div>
       <div>
@@ -16,137 +27,18 @@ const Blog = () => {
             </div>
           </div>
         </section>
+        {loadBlog ? (
+          <h2>loading</h2>
+        ) : blog.length == 0 ? (
+          <h2>there is no articles yet</h2>
+        ) : (
+          blog.map((el) => <Articleel key={el._id} article={el} />)
+        )}
+
         <div className="page-wrapper">
           <div className="container">
             <div className="row">
               <div className="col-lg-8 col-xl-8">
-                <article className="blog-post-item">
-                  <div className="post-thumb">
-                    <img
-                      src="assets/images/blog/news-1.jpg"
-                      alt=""
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="post-item mt-4">
-                    <div className="post-meta">
-                      <span className="post-author">
-                        Written by <a href="#">Admin</a>
-                      </span>
-                      <span className="post-date">
-                        <i className="fa fa-calendar-alt mr-2" />
-                        March 15, 2021
-                      </span>
-                    </div>
-                    <h2 className="post-title">
-                      <Link onClick={handleScroll} to="/blogEl">
-                        How to become a best sale marketer in a month!
-                      </Link>
-                    </h2>
-                    <div className="post-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Minima, aliquam, aliquid. Eos eum, illo autem unde
-                        consequatur, obcaecati quam voluptatem repellat
-                        consequuntur repellendus delectus voluptas architecto,
-                        quos amet hic aliquid!
-                      </p>
-
-                      <Link
-                        onClick={handleScroll}
-                        to="/blogEl"
-                        className="read-more"
-                      >
-                        {" "}
-                        More Details <i className="fa fa-angle-right ml-2" />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-                <article className="blog-post-item">
-                  <div className="post-thumb">
-                    <img
-                      src="assets/images/blog/news-2.jpg"
-                      alt=""
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="post-item mt-4">
-                    <div className="post-meta">
-                      <span className="post-author">
-                        Written by <a href="#">Admin</a>
-                      </span>
-                      <span className="post-date">
-                        <i className="fa fa-calendar-alt mr-2" />
-                        March 15, 2021
-                      </span>
-                    </div>
-                    <h2 className="post-title">
-                      <Link onClick={handleScroll} to="/blogEl">
-                        How to become a Game Developer
-                      </Link>
-                    </h2>
-                    <div className="post-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Minima, aliquam, aliquid. Eos eum, illo autem unde
-                        consequatur, obcaecati quam voluptatem repellat
-                        consequuntur repellendus delectus voluptas architecto,
-                        quos amet hic aliquid!
-                      </p>
-                      <Link
-                        onClick={handleScroll}
-                        to="/blogEl"
-                        className="read-more"
-                      >
-                        More Details <i className="fa fa-angle-right ml-2" />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-                <article className="blog-post-item">
-                  <div className="post-thumb">
-                    <img
-                      src="assets/images/blog/news-3.jpg"
-                      alt=""
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="post-item mt-4">
-                    <div className="post-meta">
-                      <span className="post-author">Written by Admin</span>
-                      <span className="post-date">
-                        <i className="fa fa-calendar-alt mr-2" />
-                        March 15, 2021
-                      </span>
-                    </div>
-                    <h2 className="post-title">
-                      <Link
-                        onClick={handleScroll}
-                        to="/blogEl"
-                        className="read-more"
-                      >
-                        How to become a Web Developer
-                      </Link>
-                    </h2>
-                    <div className="post-content">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Minima, aliquam, aliquid. Eos eum, illo autem unde
-                        consequatur, obcaecati quam voluptatem repellat
-                        consequuntur repellendus delectus voluptas architecto,
-                        quos amet hic aliquid!
-                      </p>
-                      <Link
-                        onClick={handleScroll}
-                        to="/blogEl"
-                        className="read-more"
-                      >
-                        More Details <i className="fa fa-angle-right ml-2" />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
                 <nav className="post-navigation">
                   <ul>
                     <li className="page-num active" aria-current="page">

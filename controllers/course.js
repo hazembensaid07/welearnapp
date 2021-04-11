@@ -29,28 +29,38 @@ exports.addCourse = async (req, res) => {
     res.status(400).send("can not save it");
   }
 };
+
 exports.getCoursesByCategory = async (req, res) => {
+  const query = {};
+  if (req.query.search) {
+    query.name = {
+      $regex: req.query.search,
+      $options: "i",
+    };
+  }
+  console.log(req.query);
+
+  if (req.query.category && req.query.category != "All") {
+    query.category = req.query.category;
+  }
+
   try {
-    const { category, name } = req.query.params;
-    console.log(name);
-    console.log(category);
-    const result = await Course.find(req.query);
-    console.log(result);
+    const result = await Course.find(query);
+
     if (result.length === 0) {
       res.status(400).send({ msg: "there is no this category" });
-      return;
     } else {
-      result.filter((el) => el.name.toLowerCase().includes(name.toLowerCase()));
       res.send({ message: "courses found", result });
     }
   } catch (error) {
-    res.status(400).send({ message: "There is no courses with this category" });
+    res.status(402).send({ message: "There is no courses with this category" });
   }
 };
+
 exports.getCourseById = async (req, res) => {
   try {
     const { _id } = req.params;
-    const result = await Course.findOne({ _id });
+    const result = await Course.findOne(_id);
     console.log(result);
     if (!result) {
       res.status(400).send({ msg: "there " });
