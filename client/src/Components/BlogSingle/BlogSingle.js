@@ -1,29 +1,28 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-import handleScroll from "../scroll.js";
 import { useDispatch, useSelector } from "react-redux";
 import { getComments, sendComment } from "../../JS/actions/comments";
+import handleScroll from "../scroll.js";
 import Comment from "./Comment.js";
 
-const BlogSingle = () => {
+const BlogSingle = ({ location }) => {
+  const article = location.state.article;
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.commentsReducer.comments);
   const loadComments = useSelector(
     (state) => state.commentsReducer.loadComments
   );
-  const sumComments = useSelector((state) => state.commentsReducer.sumComments);
+
   const [comment, setComment] = useState({
     msg: "",
     website: "",
     name: "",
     email: "",
+    articleID: article._id,
   });
 
   useEffect(() => {
-    dispatch(getComments());
-    console.log(comments);
-    console.log(sumComments);
+    dispatch(getComments(comment.articleID));
   }, []);
 
   const handleChange = (e) => {
@@ -201,18 +200,14 @@ const BlogSingle = () => {
                     </div>
                   </div>
                   <div className="comments">
-                    <h3 className="commment-title">{sumComments} Comments</h3>
+                    <h3 className="commment-title">Comments</h3>
                     {loadComments ? (
                       <h2>loading</h2>
                     ) : comments.length == 0 ? (
                       <h2>there is no data show</h2>
                     ) : (
                       comments.map((el) => (
-                        <Comment
-                          key={el._id}
-                          comment={el}
-                          number={sumComments}
-                        />
+                        <Comment key={el._id} comment={el} />
                       ))
                     )}
                   </div>
@@ -280,6 +275,7 @@ const BlogSingle = () => {
                             <button
                               onClick={() => {
                                 dispatch(sendComment(comment));
+
                                 setComment({
                                   name: "",
                                   email: "",
