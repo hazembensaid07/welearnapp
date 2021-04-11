@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getCourseById } from "../../JS/actions/course";
 
-const CourseDetails = ({ location }) => {
+const CourseDetails = ({ id }) => {
   const dispatch = useDispatch();
-  const id = location.state._id;
   const course = useSelector((state) => state.courseReducer.course);
   const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
   useEffect(() => {

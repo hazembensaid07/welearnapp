@@ -2,10 +2,11 @@ import React from "react";
 
 import CourseDetails from "../Components/CourseDetails/CourseDetails";
 
-const CourseView = () => {
+const CourseView = ({ location }) => {
+  const id = location.state.id;
   return (
     <div>
-      <CourseDetails />
+      <CourseDetails id={id} />
     </div>
   );
 };

@@ -2,10 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import handleScroll from "../scroll.js";
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, key }) => {
   return (
     <div>
-      {console.log(course)}
       <div className="row">
         <div className="col-xl-4 col-lg-4">
           <div className="course-block">
@@ -17,7 +16,7 @@ const CourseCard = ({ course }) => {
               <div className="course-meta">
                 <span className="course-student">
                   <i className="fa fa-user-alt" />
-                  {course.enrolled}Students
+                  {course.enrolled} Students
                 </span>
                 <span className="course-duration">
                   <i className="far fa-file-alt" />
@@ -27,11 +26,11 @@ const CourseCard = ({ course }) => {
               </div>
               <h4>
                 <Link
-                  onClick={handleScroll}
                   to={{
                     pathname: `/courseDetails`,
-                    state: { _id: course._id },
+                    state: { id: course._id },
                   }}
+                  onClick={handleScroll}
                 >
                   {course.name}
                 </Link>
