@@ -30,9 +30,7 @@ const Blog = () => {
                   </div>
                   <div className="post-item mt-4">
                     <div className="post-meta">
-                      <span className="post-author">
-                        Written by <a href="#">Admin</a>
-                      </span>
+                      <span className="post-author">Written by Admin</span>
                       <span className="post-date">
                         <i className="fa fa-calendar-alt mr-2" />
                         March 15, 2021
@@ -169,18 +167,6 @@ const Blog = () => {
               </div>
               <div className="col-lg-4 col-xl-4">
                 <div className="blog-sidebar mt-5 mt-lg-0">
-                  <div className="widget widget-search">
-                    <form role="search" className="search-form">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Search"
-                      />
-                      <button type="submit" className="search-submit">
-                        <i className="fa fa-search" />
-                      </button>
-                    </form>
-                  </div>
                   <div className="widget widget_latest_post">
                     <h4 className="widget-title">Latest Posts</h4>
                     <ul className="recent-posts">
