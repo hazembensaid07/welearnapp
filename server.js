@@ -42,6 +42,7 @@ app.use("/api", contactRoutes);
 app.use("/api", courseRoutes);
 app.use("/api", blogRoutes);
 app.use("/api", commentsRoutes);
+app.use("/api", coursenrollRoutes);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
