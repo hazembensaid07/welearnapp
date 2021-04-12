@@ -25,6 +25,7 @@ const contactRoutes = require("./routes/contact");
 const courseRoutes = require("./routes/course");
 const blogRoutes = require("./routes/blog");
 const commentsRoutes = require("./routes/comments");
+const coursenrollRoutes = require("./routes/coursenroll");
 
 // app middlewares
 app.use(morgan("dev"));
