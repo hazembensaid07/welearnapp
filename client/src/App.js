@@ -21,13 +21,14 @@ import CourseByCategory from "./Components/CoursesByCategory/CourseByCategory";
 import Blog from "./Components/Blog/Blog";
 import NotFound from "./Components/NotFound/NotFound";
 import BlogSingle from "./Components/BlogSingle/BlogSingle";
+import { isAuth } from "./Components/auth/helpers";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      {!isAuth() ? <NavBar /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/aboutUs" component={About} />
