@@ -22,6 +22,10 @@ const articleSchema = new schema({
     type: String,
     required: true,
   },
+  quote: {
+    type: String,
+    required: true,
+  },
 
   information: {
     type: String,

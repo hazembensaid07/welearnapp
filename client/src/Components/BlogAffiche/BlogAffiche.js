@@ -4,7 +4,10 @@ import img1 from "../../assets/images/blog/web.jpeg";
 import img2 from "../../assets/images/blog/marketing.jpg";
 import img3 from "../../assets/images/blog/mobile.jpg";
 import handleScroll from "../scroll.js";
-const BlogAffiche = () => {
+const BlogAffiche = ({ article }) => {
+  const b1 = article[0];
+  const b2 = article[1];
+  const b3 = article[2];
   return (
     <div>
       <section className="blog-section section-padding">
@@ -25,15 +28,22 @@ const BlogAffiche = () => {
                 </div>
                 <div className="post-item mt-4">
                   <div className="post-meta">
-                    <span className="post-author">Written by Admin</span>
+                    <span className="post-author">Written by {b1.writer}</span>
                     <span className="post-date">
                       <i className="fa fa-calendar-alt mr-2" />
-                      March 15, 2021
+                      {b1.date}
                     </span>
                   </div>
                   <h4 className="post-title">
-                    <Link onClick={handleScroll} to="/blogEl">
-                      How to become a Web Developer
+                    <Link
+                      onClick={handleScroll}
+                      className="read-more"
+                      to={{
+                        pathname: `/blogEl`,
+                        state: { article: b1 },
+                      }}
+                    >
+                      {b1.title}
                     </Link>
                   </h4>
                 </div>
@@ -46,15 +56,22 @@ const BlogAffiche = () => {
                 </div>
                 <div className="post-item mt-4">
                   <div className="post-meta">
-                    <span className="post-author">Written by Admin</span>
+                    <span className="post-author">Written by {b2.writer}</span>
                     <span className="post-date">
                       <i className="fa fa-calendar-alt mr-2" />
-                      March 15, 2021
+                      {b2.date}
                     </span>
                   </div>
                   <h4 className="post-title">
-                    <Link onClick={handleScroll} to="/blogEl">
-                      How to become a best sale marketer
+                    <Link
+                      onClick={handleScroll}
+                      className="read-more"
+                      to={{
+                        pathname: `/blogEl`,
+                        state: { article: b2 },
+                      }}
+                    >
+                      {b2.title}
                     </Link>
                   </h4>
                 </div>
@@ -67,15 +84,22 @@ const BlogAffiche = () => {
                 </div>
                 <div className="post-item mt-4">
                   <div className="post-meta">
-                    <span className="post-author">Written by Admin</span>
+                    <span className="post-author">written {b3.writer}</span>
                     <span className="post-date">
                       <i className="fa fa-calendar-alt mr-2" />
-                      March 15, 2021
+                      {b3.dates}
                     </span>
                   </div>
                   <h4 className="post-title">
-                    <Link onClick={handleScroll} to="/blogEl">
-                      How to become a Mobile Developer
+                    <Link
+                      onClick={handleScroll}
+                      className="read-more"
+                      to={{
+                        pathname: `/blogEl`,
+                        state: { article: b3 },
+                      }}
+                    >
+                      {b3.title}
                     </Link>
                   </h4>
                 </div>

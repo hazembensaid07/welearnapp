@@ -10,7 +10,7 @@ export const getComments = (id) => async (dispatch) => {
   dispatch({ type: GET_COMMENTS_LOAD });
   try {
     let result = await axios.get(`http://localhost:8000/api/comments?id=${id}`);
-    console.log(result);
+    console.log(result.data.response);
     dispatch({ type: GET_COMMENTS_SUCCESS, payload: result.data.response });
   } catch (error) {
     dispatch({ type: GET_COMMENTS_FAIL, payload: error });

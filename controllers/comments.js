@@ -18,11 +18,15 @@ exports.sendComment = async (req, res) => {
 
 exports.getAllComments = async (req, res) => {
   const query = {};
+
   if (req.query.id) {
+    console.log(req.query.id);
     query.id = req.query.id;
   }
+  console.log(query);
   try {
-    const result = await comments.find(query);
+    const result = await comments.find({ articleID: query.id });
+    console.log(result);
     res.send({ response: result, message: "Comments found" });
   } catch (error) {
     res.status(400).send({ message: "can not get comments" });
