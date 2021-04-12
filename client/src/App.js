@@ -28,7 +28,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      {!isAuth() ? <NavBar /> : null}
+      {<NavBar />}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/aboutUs" component={About} />
