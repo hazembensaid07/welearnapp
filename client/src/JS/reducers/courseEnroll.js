@@ -1,32 +1,32 @@
 import {
-  GET_COMMENTS_LOAD,
-  GET_COMMENTS_SUCCESS,
-  GET_COMMENTS_FAIL,
+  GET_COURSENROLL_LOAD,
+  GET_COURSENROLL_SUCCESS,
+  GET_COURSENROLL_FAIL,
   ADD_SUM,
-} from "../constants/comments";
+} from "../constants/courseEnroll";
 
 // initial state
 const initialState = {
-  comments: [],
-  loadComments: false,
+  courseEnroll: [],
+  loadCourseEnroll: false,
   errors: null,
-  sumComments: 0,
 };
 
-export const commentsReducer = (state = initialState, { type, payload }) => {
+export const courseEnrollReducer = (
+  state = initialState,
+  { type, payload }
+) => {
   switch (type) {
-    case GET_COMMENTS_LOAD:
-      return { ...state, loadComments: true };
-    case GET_COMMENTS_SUCCESS:
+    case GET_COURSENROLL_LOAD:
+      return { ...state, loadCourseEnroll: true };
+    case GET_COURSENROLL_SUCCESS:
       return {
         ...state,
-        loadComments: false,
-        comments: payload,
+        loadCourseEnroll: false,
+        courseEnroll: payload,
       };
-    case GET_COMMENTS_FAIL:
-      return { ...state, loadComments: false, errors: payload };
-    case ADD_SUM:
-      return { ...state, sumComments: state.sumComments + 1 };
+    case GET_COURSENROLL_FAIL:
+      return { ...state, loadCourseEnroll: false, errors: payload };
 
     default:
       return state;

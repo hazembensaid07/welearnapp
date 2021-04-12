@@ -1,25 +1,23 @@
 exports.getCourses = async (req, res) => {
   const query = {};
 
-  if (req.query.id) {
-    console.log(req.query.id);
-    query.id = req.query.id;
+  if (req.query.userID) {
+    query.userID = req.query.userID;
   }
-  console.log(query);
   try {
-    const result = await comments.find({ articleID: query.id });
+    const result = await comments.find({ userID: query.userID });
     console.log(result);
-    res.send({ response: result, message: "Comments found" });
+    res.send({ response: result, message: "courses found" });
   } catch (error) {
-    res.status(400).send({ message: "can not get comments" });
+    res.status(400).send({ message: "User bought no courses" });
   }
 };
 
 exports.addCourse = async (req, res) => {
   try {
-    const newComment = new comments(req.body);
+    const newCourse = new Coursenroll(req.body);
 
-    const response = await newComment.save();
+    const response = await newCourse.save();
     res.status(200).send(response);
   } catch (error) {
     res.status("can't save it");

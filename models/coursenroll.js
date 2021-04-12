@@ -14,4 +14,4 @@ const coursenrollSchema = new schema({
     required: true,
   },
 });
-module.exports = Coursenroll = mongoose.model("course", coursenrollSchema);
+module.exports = Coursenroll = mongoose.model("coursenroll", coursenrollSchema);
