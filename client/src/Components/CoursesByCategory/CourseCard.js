@@ -16,11 +16,11 @@ const CourseCard = ({ course, key }) => {
               <div className="course-meta">
                 <span className="course-student">
                   <i className="fa fa-user-alt" />
-                  {course.enrolled} Students
+                  {course.enrolled}
                 </span>
                 <span className="course-duration">
                   <i className="far fa-file-alt" />
-                  {course.lessons} Lessons
+                  {course.lessons}
                 </span>
                 <span className="course-label">new</span>
               </div>
