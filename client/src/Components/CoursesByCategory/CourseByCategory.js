@@ -62,39 +62,39 @@ const CourseByCategory = ({ location }) => {
         </div>
 
         <div className="container">
-          {loadCourses ? (
-            <h1>please wait loading</h1>
-          ) : courses.length === 0 ? (
-            <h1>There is no course in this category</h1>
-          ) : (
-            courses.map((course) => (
-              <CourseCard course={course} key={course._id} />
-            ))
-          )}
-          <button
-            onClick={() => {
-              gotoPrevious();
-            }}
-          >
-            Previous
-          </button>
-          {pages.map((pageIndex) => (
+          {loadCourses && <h1>please wait loading</h1>}
+          {courses.length !== 0 &&
+            courses.map((el) => <CourseCard course={el} key={el._id} />)}
+          {courses.length != 0 && (
             <button
-              key={pageIndex}
               onClick={() => {
-                setPageNumber(pageIndex);
+                gotoPrevious();
               }}
             >
-              {pageIndex + 1}
+              Previous
             </button>
-          ))}
-          <button
-            onClick={() => {
-              gotoNext();
-            }}
-          >
-            Next
-          </button>
+          )}
+          {courses.length !== 0 &&
+            pages.map((pageIndex) => (
+              <button
+                key={pageIndex}
+                onClick={() => {
+                  setPageNumber(pageIndex);
+                }}
+              >
+                {pageIndex + 1}
+              </button>
+            ))}
+          {courses.length !== 0 && (
+            <button
+              onClick={() => {
+                gotoNext();
+              }}
+            >
+              Next
+            </button>
+          )}
+          {courses.length === 0 && <h1>There is no course in this category</h1>}
         </div>
       </section>
     </div>

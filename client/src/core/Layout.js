@@ -20,9 +20,15 @@ const Layout = ({ children, match, history }) => {
         >
           <nav className="navbar navbar-expand-lg " id="nav_bar">
             <div className="container">
-              <Link to="/" className="navbar-brand">
-                <img src={logo} alt="Eduhash" className="img-fluid" />
-              </Link>
+              {isAuth() ? (
+                <Link to="/home" className="navbar-brand">
+                  <img src={logo} alt="Eduhash" className="img-fluid" />
+                </Link>
+              ) : (
+                <Link to="/" className="navbar-brand">
+                  <img src={logo} alt="Eduhash" className="img-fluid" />
+                </Link>
+              )}
               {/* Toggler */}
               <button
                 className="navbar-toggler"
@@ -60,7 +66,9 @@ const Layout = ({ children, match, history }) => {
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false"
-                      ></Link>
+                      >
+                        Home
+                      </Link>
                     )}
                   </li>
                   <li className="nav-item ">
