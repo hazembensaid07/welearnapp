@@ -13,7 +13,7 @@ import Reset from "./Components/auth/Reset";
 import CourseView from "./Pages/CourseView";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
-import NavBar from "./Components/NavBar/NavBar";
+
 import Footer from "./Components/Footer/Footer";
 import Contact from "./Components/Contact/Contact";
 
@@ -29,26 +29,27 @@ import Layout from "./core/Layout";
 function App() {
   return (
     <div className="App">
-      <Layout />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/aboutUs" component={About} />
-        <Route path="/courses" component={CourseByCategory} />
-        <Route path="/courseDetails" component={CourseView} />
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/aboutUs" component={About} />
+          <Route path="/courses" component={CourseByCategory} />
+          <Route path="/courseDetails" component={CourseView} />
 
-        <Route path="/contact" component={Contact} />
-        <Route path="/blog" component={Blog} />
-        <Route path="/blogEl" component={BlogSingle} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/blog" component={Blog} />
+          <Route path="/blogEl" component={BlogSingle} />
 
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/signin" component={Signin} />
-        <Route exact path="/auth/activate/:token" component={Activate} />
-        <PrivateRoute exact path="/private" component={Private} />
-        <AdminRoute exact path="/admin" component={Admin} />
-        <Route exact path="/auth/password/forgot" component={Forgot} />
-        <Route exact path="/auth/password/reset/:token" component={Reset} />
-        <Route path="/*" component={NotFound} />
-      </Switch>
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/signin" component={Signin} />
+          <Route exact path="/auth/activate/:token" component={Activate} />
+          <PrivateRoute exact path="/private" component={Private} />
+          <AdminRoute exact path="/admin" component={Admin} />
+          <Route exact path="/auth/password/forgot" component={Forgot} />
+          <Route exact path="/auth/password/reset/:token" component={Reset} />
+          <Route path="/*" component={NotFound} />
+        </Switch>
+      </Layout>
       <Footer />
     </div>
   );

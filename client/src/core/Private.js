@@ -73,6 +73,7 @@ const Private = ({ history }) => {
           setValues({ ...values, buttonText: "Submitted" });
           toast.success("Profile updated successfully");
           loadProfile();
+          console.log("okay");
         });
       })
       .catch((error) => {
