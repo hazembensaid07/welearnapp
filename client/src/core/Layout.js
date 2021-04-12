@@ -39,17 +39,29 @@ const Layout = ({ children, match, history }) => {
               <div className="collapse navbar-collapse" id="navbarMenu">
                 <ul className="navbar-nav mx-auto">
                   <li className="nav-item dropdown">
-                    <Link
-                      className="nav-link dropdown-toggle"
-                      to="/"
-                      id="navbar3"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Home
-                    </Link>
+                    {isAuth() ? (
+                      <Link
+                        className="nav-link dropdown-toggle"
+                        to="/home"
+                        id="navbar3"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Home
+                      </Link>
+                    ) : (
+                      <Link
+                        className="nav-link dropdown-toggle"
+                        to="/"
+                        id="navbar3"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      ></Link>
+                    )}
                   </li>
                   <li className="nav-item ">
                     <Link to="/aboutUs" className="nav-link js-scroll-trigger">
@@ -133,6 +145,13 @@ const Layout = ({ children, match, history }) => {
                   <Link to="/signup" className="btn btn-main btn-sm">
                     sign up
                   </Link>
+                )}
+                {isAuth() && (
+                  <div className="header-login">
+                    <Link className="btn btn-main btn-sm" to="/mycourses">
+                      My Courses
+                    </Link>
+                  </div>
                 )}
                 {isAuth() && isAuth().role === "subscriber" && (
                   <div className="header-login">

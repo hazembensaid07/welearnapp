@@ -23,9 +23,9 @@ import NotFound from "./Components/NotFound/NotFound";
 import BlogSingle from "./Components/BlogSingle/BlogSingle";
 import { isAuth } from "./Components/auth/helpers";
 
-import "./App.css";
+import home from "./Pages/Homeauth";
 import Layout from "./core/Layout";
-
+import "./App.css";
 function App() {
   return (
     <div className="App">
@@ -35,7 +35,7 @@ function App() {
           <Route path="/aboutUs" component={About} />
           <Route path="/courses" component={CourseByCategory} />
           <Route path="/courseDetails" component={CourseView} />
-
+          <Route exact path="/home" component={home} />
           <Route path="/contact" component={Contact} />
           <Route path="/blog" component={Blog} />
           <Route path="/blogEl" component={BlogSingle} />

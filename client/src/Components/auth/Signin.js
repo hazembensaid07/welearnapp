@@ -24,9 +24,7 @@ const Signin = ({ history }) => {
 
   const informParent = (response) => {
     authenticate(response, () => {
-      isAuth() && isAuth().role === "admin"
-        ? history.push("/admin")
-        : history.push("/private");
+      isAuth() && history.push("/home");
     });
   };
 
@@ -50,9 +48,7 @@ const Signin = ({ history }) => {
             buttonText: "Submitted",
           });
           // toast.success(`Hey ${response.data.user.name}, Welcome back!`);
-          isAuth() && isAuth().role === "admin"
-            ? history.push("/admin")
-            : history.push("/private");
+          isAuth() && history.push("/home");
         });
       })
       .catch((error) => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
-import Layout from "../../core/Layout";
+
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -72,13 +72,11 @@ const Reset = ({ match }) => {
   );
 
   return (
-    <Layout>
-      <div className="col-md-6 offset-md-3">
-        <ToastContainer />
-        <h1 className="p-5 text-center">Hey {name}, Type your new password</h1>
-        {passwordResetForm()}
-      </div>
-    </Layout>
+    <div className="col-md-6 offset-md-3">
+      <ToastContainer />
+      <h1 className="p-5 text-center">Hey {name}, Type your new password</h1>
+      {passwordResetForm()}
+    </div>
   );
 };
 

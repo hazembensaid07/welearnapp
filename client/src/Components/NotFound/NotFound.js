@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import handleScroll from "../scroll.js";
+import { isAuth } from "../auth/helpers";
 const NotFound = () => {
   return (
     <div>
@@ -20,9 +21,23 @@ const NotFound = () => {
                 <div className="error-content">
                   Try using the button below to go to main page of the site
                   <br />
-                  <Link onClick={handleScroll} to="/" className="btn btn-main">
-                    Back to Home Page
-                  </Link>
+                  {isAuth() ? (
+                    <Link
+                      onClick={handleScroll}
+                      to="/home"
+                      className="btn btn-main"
+                    >
+                      Back to Home Page
+                    </Link>
+                  ) : (
+                    <Link
+                      onClick={handleScroll}
+                      to="/"
+                      className="btn btn-main"
+                    >
+                      Back to Home Page
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

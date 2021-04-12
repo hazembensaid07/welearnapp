@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { postContacts } from "../../JS/actions/contact";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import "./Contact.css";
 const Contact = () => {
   const dispatch = useDispatch();
+  const response = useSelector((state) => state.contactReducer.response);
   const [message, setMessage] = useState({
     name: "",
     email: "",
@@ -26,11 +29,14 @@ const Contact = () => {
       setMessage({ name: "", email: "", subject: "", msg: "" });
     } else {
       dispatch(postContacts(message));
+      toast.success(response);
+
       setMessage({ name: "", email: "", subject: "", msg: "" });
     }
   };
   return (
     <section className="hhh">
+      <ToastContainer />
       <div className="container ">
         <div className="row align-items-center justify-content-center">
           <div className="col-lg-7 col-xl-7">
