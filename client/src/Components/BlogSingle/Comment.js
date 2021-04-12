@@ -6,13 +6,7 @@ const Comment = ({ comment }) => {
     <div>
       <div className="media">
         <div className="media-body">
-          <h5 className="mt-0">
-            {comment.name} <span>17 Feb 2020</span>{" "}
-            <a className="reply-link" href="#">
-              <i className="fas fa-reply-all" />
-              Reply
-            </a>
-          </h5>
+          <h5 className="mt-0">{comment.name}</h5>
           {comment.msg}
         </div>
       </div>
