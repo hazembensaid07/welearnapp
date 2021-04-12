@@ -6,7 +6,6 @@ exports.addCourse = async (req, res) => {
     if (
       req.body.name === "" ||
       req.body.overview === "" ||
-      req.body.learn === "" ||
       req.body.price === "" ||
       req.body.imgSrc === "" ||
       req.body.duration === "" ||
