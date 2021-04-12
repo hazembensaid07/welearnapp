@@ -24,7 +24,7 @@ const BlogAffiche = ({ article }) => {
             <div className="col-lg-4 col-xl-4 col-md-6 ">
               <article className="blog-post-item">
                 <div className="post-thumb">
-                  <img src={img1} alt="" className="img-fluid" />
+                  <img src={b1.imgSrc} alt="" className="img-fluid" />
                 </div>
                 <div className="post-item mt-4">
                   <div className="post-meta">
@@ -52,7 +52,7 @@ const BlogAffiche = ({ article }) => {
             <div className="col-lg-4 col-xl-4 col-md-6">
               <article className="blog-post-item">
                 <div className="post-thumb">
-                  <img src={img2} alt="" className="img-fluid" />
+                  <img src={b2.imgSrc} alt="" className="img-fluid" />
                 </div>
                 <div className="post-item mt-4">
                   <div className="post-meta">
@@ -80,7 +80,7 @@ const BlogAffiche = ({ article }) => {
             <div className="col-lg-4 col-xl-4 col-md-6">
               <article className="blog-post-item">
                 <div className="post-thumb">
-                  <img src={img3} alt="" className="img-fluid" />
+                  <img src={b3.imgSrc} alt="" className="img-fluid" />
                 </div>
                 <div className="post-item mt-4">
                   <div className="post-meta">

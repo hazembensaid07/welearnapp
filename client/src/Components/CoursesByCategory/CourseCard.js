@@ -35,10 +35,7 @@ const CourseCard = ({ course, key }) => {
                   {course.name}
                 </Link>
               </h4>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis,
-                alias.
-              </p>
+              <p>presented by {course.instructor}</p>
             </div>
           </div>
         </div>

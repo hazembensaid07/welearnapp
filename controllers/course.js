@@ -2,6 +2,7 @@ const Course = require("../models/course");
 exports.addCourse = async (req, res) => {
   try {
     const newCourse = new Course(req.body);
+    console.log(newCourse);
 
     if (
       req.body.name === "" ||
