@@ -2,19 +2,11 @@ import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { isAuth, signout } from "../Components/auth/helpers";
 
-const Layout = ({ children, match, history }) => {
-  const isActive = (path) => {
-    if (match.path === path) {
-      return { color: "#000" };
-    } else {
-      return { color: "#fff" };
-    }
-  };
-
+const Layout = () => {
   const nav = () => (
     <ul className="nav nav-tabs bg-primary">
       <li className="nav-item">
-        <Link to="/" className="nav-link" style={isActive("/")}>
+        <Link to="/" className="nav-link">
           Home
         </Link>
       </li>
@@ -22,12 +14,12 @@ const Layout = ({ children, match, history }) => {
       {!isAuth() && (
         <Fragment>
           <li className="nav-item">
-            <Link to="/signin" className="nav-link" style={isActive("/signin")}>
+            <Link to="/signin" className="nav-link">
               Signin
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/signup" className="nav-link" style={isActive("/signup")}>
+            <Link to="/signup" className="nav-link">
               Signup
             </Link>
           </li>
@@ -36,7 +28,7 @@ const Layout = ({ children, match, history }) => {
 
       {isAuth() && isAuth().role === "admin" && (
         <li className="nav-item">
-          <Link className="nav-link" style={isActive("/admin")} to="/admin">
+          <Link className="nav-link" to="/admin">
             {isAuth().name}
           </Link>
         </li>
@@ -44,7 +36,7 @@ const Layout = ({ children, match, history }) => {
 
       {isAuth() && isAuth().role === "subscriber" && (
         <li className="nav-item">
-          <Link className="nav-link" style={isActive("/private")} to="/private">
+          <Link className="nav-link" to="/private">
             {isAuth().name}
           </Link>
         </li>
@@ -57,7 +49,7 @@ const Layout = ({ children, match, history }) => {
             style={{ cursor: "pointer", color: "#fff" }}
             onClick={() => {
               signout(() => {
-                history.push("/");
+                console.log("out");
               });
             }}
           >
@@ -68,12 +60,7 @@ const Layout = ({ children, match, history }) => {
     </ul>
   );
 
-  return (
-    <Fragment>
-      {nav()}
-      <div className="container">{children}</div>
-    </Fragment>
-  );
+  return <Fragment>{nav()}</Fragment>;
 };
 
-export default withRouter(Layout);
+export default Layout;

@@ -24,11 +24,12 @@ import BlogSingle from "./Components/BlogSingle/BlogSingle";
 import { isAuth } from "./Components/auth/helpers";
 
 import "./App.css";
+import Layout from "./core/Layout";
 
 function App() {
   return (
     <div className="App">
-      {<NavBar />}
+      <Layout />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/aboutUs" component={About} />
