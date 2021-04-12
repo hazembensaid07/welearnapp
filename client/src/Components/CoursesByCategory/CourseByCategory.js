@@ -26,7 +26,7 @@ const CourseByCategory = ({ location }) => {
     dispatch(getCourses(category, name, pageNumber));
     console.log(courses);
     console.log(pageNumber);
-  }, [name, pageNumber]);
+  }, [name, pageNumber, category]);
   return (
     <div>
       <section className="page-header">

@@ -31,6 +31,10 @@ const articleSchema = new schema({
     type: String,
     required: false,
   },
+  imgSrc: {
+    type: String,
+    required: false,
+  },
 });
 
 module.exports = article = mongoose.model("article", articleSchema);
