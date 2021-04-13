@@ -29,8 +29,8 @@ const MyCoursesCard = ({ course, key }) => {
               <h4>
                 <Link
                   to={{
-                    pathname: `/courseDetails`,
-                    state: { id: course._id },
+                    pathname: `/courseContent`,
+                    state: { course: course },
                   }}
                   onClick={handleScroll}
                 >
