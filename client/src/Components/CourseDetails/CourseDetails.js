@@ -13,6 +13,7 @@ const CourseDetails = ({ id }) => {
 
   return (
     <div>
+      {loadCourses && <h1> loading please wait</h1>}
       <section className="page-header">
         <div className="container">
           <div className="row justify-content-center">

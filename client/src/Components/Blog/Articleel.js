@@ -15,9 +15,7 @@ const Articleel = ({ article }) => {
         </div>
         <div className="post-item mt-4">
           <div className="post-meta">
-            <span className="post-author">
-              Written by <a href="#">{article.writer}</a>
-            </span>
+            <span className="post-author">Written by {article.writer}</span>
             <span className="post-date">
               <i className="fa fa-calendar-alt mr-2" />
               {article.date}

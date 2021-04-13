@@ -15,7 +15,7 @@ const Signin = ({ history }) => {
     buttonText: "Submit",
   });
 
-  const { email, password, buttonText } = values;
+  const { email, password } = values;
 
   const handleChange = (name) => (event) => {
     // console.log(event.target.value);

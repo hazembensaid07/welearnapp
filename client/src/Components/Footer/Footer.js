@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/dark-logo.png";
 import handleScroll from "../scroll.js";
+import { isAuth } from "../auth/helpers";
 const Footer = () => {
   return (
     <div>
@@ -111,10 +112,25 @@ const Footer = () => {
             <div className="row justify-content-center align-items-center">
               <div className="col-xl-6 col-lg-4 col-md-12">
                 <div className="footer-logo text-lg-left text-center mb-4 mb-lg-0">
-                  <Link onClick={handleScroll} to="/">
-                    {" "}
-                    <img src={logo} alt="EduHash" className="img-fluid" />{" "}
-                  </Link>
+                  {isAuth() ? (
+                    <Link onClick={handleScroll} to="/home">
+                      {" "}
+                      <img
+                        src={logo}
+                        alt="EduHash"
+                        className="img-fluid"
+                      />{" "}
+                    </Link>
+                  ) : (
+                    <Link onClick={handleScroll} to="/">
+                      {" "}
+                      <img
+                        src={logo}
+                        alt="EduHash"
+                        className="img-fluid"
+                      />{" "}
+                    </Link>
+                  )}
                 </div>
               </div>
               <div className="col-xl-6 col-lg-8 col-md-12">

@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img1 from "../../assets/images/blog/web.jpeg";
-import img2 from "../../assets/images/blog/marketing.jpg";
-import img3 from "../../assets/images/blog/mobile.jpg";
+
 import handleScroll from "../scroll.js";
 const BlogAffiche = ({ article }) => {
   const b1 = article[0];

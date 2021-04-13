@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getComments, sendComment } from "../../JS/actions/comments";
-import handleScroll from "../scroll.js";
+
 import Comment from "./Comment.js";
 
 const BlogSingle = ({ location }) => {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import scroll from "../scroll";
 
 import { getCourses } from "../../JS/actions/course";
 import CourseCard from "./CourseCard";

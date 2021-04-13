@@ -21,7 +21,6 @@ import CourseByCategory from "./Components/CoursesByCategory/CourseByCategory";
 import Blog from "./Components/Blog/Blog";
 import NotFound from "./Components/NotFound/NotFound";
 import BlogSingle from "./Components/BlogSingle/BlogSingle";
-import { isAuth } from "./Components/auth/helpers";
 
 import home from "./Pages/Homeauth";
 import Layout from "./core/Layout";
