@@ -25,6 +25,7 @@ const contactRoutes = require("./routes/contact");
 const courseRoutes = require("./routes/course");
 const blogRoutes = require("./routes/blog");
 const commentsRoutes = require("./routes/comments");
+const coursenrollRoutes = require("./routes/coursenroll");
 
 // app middlewares
 app.use(morgan("dev"));
@@ -41,6 +42,7 @@ app.use("/api", contactRoutes);
 app.use("/api", courseRoutes);
 app.use("/api", blogRoutes);
 app.use("/api", commentsRoutes);
+app.use("/api", coursenrollRoutes);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
