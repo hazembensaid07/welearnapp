@@ -11,6 +11,8 @@ import AdminRoute from "./Components/auth/AdminRoute";
 import Forgot from "./Components/auth/Forgot";
 import Reset from "./Components/auth/Reset";
 import Mycourses from "./Components/auth/Mycourses";
+import CourseContent from "./Components/auth/CourseContent";
+
 import CourseView from "./Pages/CourseView";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
@@ -46,6 +48,7 @@ function App() {
           <PrivateRoute exact path="/private" component={Private} />
           <AdminRoute exact path="/admin" component={Admin} />
           <PrivateRoute exact path="/myCourses" component={Mycourses} />
+          <PrivateRoute exact path="/courseContent" component={CourseContent} />
 
           <Route exact path="/auth/password/forgot" component={Forgot} />
           <Route exact path="/auth/password/reset/:token" component={Reset} />

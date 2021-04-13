@@ -1,7 +1,7 @@
 exports.getCourses = async (req, res) => {
   const query = {};
 
-  if (req.query.userID) {
+  if (req.query.user) {
     query.user = JSON.parse(JSON.stringify(req.query.user));
   }
   try {
