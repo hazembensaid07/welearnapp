@@ -5,11 +5,11 @@ import {
 } from "../constants/courseEnroll";
 import axios from "axios";
 
-export const getCourses = (id) => async (dispatch) => {
+export const getCourses = (user) => async (dispatch) => {
   dispatch({ type: GET_COURSENROLL_LOAD });
   try {
     let result = await axios.get(
-      `http://localhost:8000/api/comments?userID=${id}`
+      `http://localhost:8000/api/coursenroll?user=${user}`
     );
     console.log(result.data.response);
     dispatch({ type: GET_COURSENROLL_SUCCESS, payload: result.data.response });
@@ -19,14 +19,14 @@ export const getCourses = (id) => async (dispatch) => {
   }
 };
 
-export const addCourse = (id) => async (dispatch) => {
+export const addCourse = (enroll) => async (dispatch) => {
   try {
     const result = await axios.post(
       "http://localhost:8000/api/coursenroll",
-      id
+      enroll
     );
     console.log(result);
-    dispatch(getCourses(id.userID));
+    dispatch(getCourses(enroll.user));
   } catch (error) {
     dispatch({ type: GET_COURSENROLL_FAIL, payload: error });
   }

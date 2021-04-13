@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addCourse, getCourses } from "../../JS/actions/courseEnroll";
 import handleScroll from "../scroll.js";
+import MycoursesCard from "./MycoursesCard";
 
 const Mycourses = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Mycourses = () => {
 
   useEffect(() => {
     dispatch(getCourses(localStorage.getItem("user")));
+    console.log(courseEnrolled);
   }, []);
   return (
     <div>
@@ -30,16 +32,13 @@ const Mycourses = () => {
         </div>
       </section>
       <div className="container">
-        {loadCourseEnroll ? <h1>please wait loading</h1> : (
-            courseEnrolled.map((course)=>)}
-
-        {loadCourses ? (
+        {loadEnrolled ? (
           <h1>please wait loading</h1>
-        ) : courses.length === 0 ? (
-          <h1>There is no course in this category</h1>
+        ) : courseEnrolled === 0 ? (
+          <h1>You bought no courses</h1>
         ) : (
-          courses.map((course) => (
-            <CourseCard course={course} key={course._id} />
+          courseEnrolled.map((enroll) => (
+            <MycoursesCard course={enroll.course} key={enroll.course._id} />
           ))
         )}
       </div>

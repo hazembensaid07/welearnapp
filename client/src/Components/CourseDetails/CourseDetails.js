@@ -131,19 +131,18 @@ const CourseDetails = ({ id }) => {
                       className="read-more"
                       to={{
                         pathname: `/myCourses`,
-                        state: { course: course },
                       }}
                     >
                       <button
                         className="button button-enroll-course btn btn-primary"
                         onClick={() => {
-                          const userID = localStorage.getItem("user");
-                          const id = {};
-                          id.userID = userID;
-                          console.log(id.userID);
-                          id.courseID = course._id;
+                          const user = localStorage.getItem("user");
+                          const enroll = {};
+                          enroll.user = user;
 
-                          dispatch(addCourse(id));
+                          enroll.course = course;
+
+                          dispatch(addCourse(enroll));
                         }}
                       >
                         Enroll Course

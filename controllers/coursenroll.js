@@ -2,10 +2,10 @@ exports.getCourses = async (req, res) => {
   const query = {};
 
   if (req.query.userID) {
-    query.userID = req.query.userID;
+    query.user = JSON.parse(JSON.stringify(req.query.user));
   }
   try {
-    const result = await comments.find({ userID: query.userID });
+    const result = await Coursenroll.find({ user: query.user });
     console.log(result);
     res.send({ response: result, message: "courses found" });
   } catch (error) {
