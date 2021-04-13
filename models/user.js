@@ -3,6 +3,11 @@ const crypto = require("crypto");
 // user schema
 const userScheama = new mongoose.Schema(
   {
+    courses: [
+      {
+        type: String,
+      },
+    ],
     name: {
       type: String,
       trim: true,

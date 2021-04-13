@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Link } from "react-router-dom";
 import { getCourseById } from "../../JS/actions/course";
+import { addCourse } from "../../JS/actions/courseEnroll";
+import handleScroll from "../scroll.js";
 
 const CourseDetails = ({ id }) => {
   const dispatch = useDispatch();
@@ -9,8 +11,7 @@ const CourseDetails = ({ id }) => {
   const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
   useEffect(() => {
     dispatch(getCourseById(id));
-  }, [dispatch]);
-
+  }, []);
   return (
     <div>
       {loadCourses && <h1> loading please wait</h1>}
@@ -125,9 +126,29 @@ const CourseDetails = ({ id }) => {
                     </li>
                   </ul>
                   <div className="buy-btn">
-                    <button className="button button-enroll-course btn btn-primary">
-                      Enroll Course
-                    </button>
+                    <Link
+                      onClick={handleScroll}
+                      className="read-more"
+                      to={{
+                        pathname: `/myCourses`,
+                        state: { course: course },
+                      }}
+                    >
+                      <button
+                        className="button button-enroll-course btn btn-primary"
+                        onClick={() => {
+                          const userID = localStorage.getItem("user");
+                          const id = {};
+                          id.userID = userID;
+                          console.log(id.userID);
+                          id.courseID = course._id;
+
+                          dispatch(addCourse(id));
+                        }}
+                      >
+                        Enroll Course
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
