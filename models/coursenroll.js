@@ -5,13 +5,12 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 const coursenrollSchema = new schema({
-  userID: {
-    type: String,
+  user: {
+    type: Object,
     required: true,
   },
-  courseID: {
-    type: String,
-    required: true,
+  course: {
+    type: Object,
   },
 });
 module.exports = Coursenroll = mongoose.model("coursenroll", coursenrollSchema);
