@@ -8,7 +8,7 @@ router.post("/course", controllers.addCourse);
 
 router.get("/course", controllers.getCoursesByCategory);
 
-router.get("/course/:id", controllers.getCourseById);
+router.get("/coursee/:id", controllers.getCourseById);
 
 router.delete("/course/:id", controllers.deleteCourse);
 router.get("/courses", controllers.getAllCourses);
