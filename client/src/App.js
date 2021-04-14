@@ -14,6 +14,8 @@ import Mycourses from "./Components/auth/Mycourses";
 import CourseContent from "./Components/auth/CourseContent";
 import UserList from "./Admindashboard/UserList";
 import AdminDash from "./Admindashboard/adminLand";
+import CourseList from "./Admindashboard/CourseList";
+
 import BlogList from "./Admindashboard/BlogList";
 import AddArticle from "./Admindashboard/AddArticle";
 
@@ -55,6 +57,8 @@ function App() {
           <AdminRoute exact path="/bloglist" component={BlogList} />
           <AdminRoute exact path="/addArticle" component={AddArticle} />
           <AdminRoute exact path="/admindash" component={AdminDash} />
+          <AdminRoute exact path="/courselist" component={CourseList} />
+
           <PrivateRoute exact path="/myCourses" component={Mycourses} />
           <PrivateRoute exact path="/courseContent" component={CourseContent} />
 

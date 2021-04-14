@@ -46,7 +46,7 @@ exports.getCoursesByCategory = async (req, res) => {
   if (req.query.category && req.query.category != "All") {
     query.category = req.query.category;
   }
-
+  console.log(query);
   try {
     const result = await Course.find(query)
       .limit(PAGE_SIZE)
