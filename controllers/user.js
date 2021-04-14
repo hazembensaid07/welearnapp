@@ -14,6 +14,7 @@ exports.read = async (req, res) => {
 exports.getAllUsers = async (req, res) => {
   try {
     const result = await User.find();
+    console.log(result);
     res.send({ response: result, message: "users found" });
   } catch (error) {
     res.status(400).send({ message: "can not get users" });
