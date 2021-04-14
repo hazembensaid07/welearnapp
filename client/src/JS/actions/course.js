@@ -40,3 +40,19 @@ export const getCourseById = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const deleteCourse = (id) => (dispatch) => {
+  axios
+    .delete(`http://localhost:8000/api/course/${id}`)
+    .then((response) => dispatch(getCourses("", "", "")))
+    .catch((err) => console.log(err));
+};
+
+export const addCourse = (course) => async (dispatch) => {
+  try {
+    const result = await axios.post("http://localhost:8000/api/course", course);
+    dispatch(getCourses("", "", ""));
+  } catch (error) {
+    dispatch({ type: GET_COURSES_FAIL, payload: error });
+  }
+};
