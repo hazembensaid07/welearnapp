@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCourses } from "../JS/actions/course";
 import CourseCardClone from "./courseCardClone";
+import { Link } from "react-router-dom";
 
 const CourseList = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ const CourseList = () => {
   }, []);
   return (
     <div>
-      <button>Add Courses</button>
+      <Link to="/addcourse">
+        <button>Add Courses</button>
+      </Link>
       <div
         style={{
           display: "flex",

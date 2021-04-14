@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteCourse } from "../JS/actions/course";
 
 import handleScroll from "../Components/scroll";
 const CourseCardClone = ({ course, key }) => {
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div className="row">
@@ -35,7 +39,9 @@ const CourseCardClone = ({ course, key }) => {
                   {course.name}
                 </Link>
               </h4>
-              <button>Delete</button>
+              <button onClick={() => dispatch(deleteCourse(course._id))}>
+                Delete
+              </button>
             </div>
           </div>
         </div>

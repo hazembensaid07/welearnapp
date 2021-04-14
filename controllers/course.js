@@ -81,3 +81,14 @@ exports.getCourseById = async (req, res) => {
     res.status(400).send({ message: "There is no course" });
   }
 };
+
+exports.deleteCourse = async (req, res) => {
+  try {
+    const result = await Contact.deleteOne({ _id: req.params.id });
+    result.n
+      ? res.status(200).send({ message: "user deleted" })
+      : res.send("there is no user with this id");
+  } catch (error) {
+    res.send("No contact exist with that ID");
+  }
+};

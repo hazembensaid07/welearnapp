@@ -18,6 +18,7 @@ import CourseList from "./Admindashboard/CourseList";
 
 import BlogList from "./Admindashboard/BlogList";
 import AddArticle from "./Admindashboard/AddArticle";
+import AddCourse from "./Admindashboard/AddCourse";
 
 import CourseView from "./Pages/CourseView";
 import About from "./Pages/About";
@@ -58,6 +59,7 @@ function App() {
           <AdminRoute exact path="/addArticle" component={AddArticle} />
           <AdminRoute exact path="/admindash" component={AdminDash} />
           <AdminRoute exact path="/courselist" component={CourseList} />
+          <AdminRoute exact path="/addcourse" component={AddCourse} />
 
           <PrivateRoute exact path="/myCourses" component={Mycourses} />
           <PrivateRoute exact path="/courseContent" component={CourseContent} />
