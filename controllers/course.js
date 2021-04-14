@@ -30,6 +30,14 @@ exports.addCourse = async (req, res) => {
   }
 };
 
+exports.getAllCourses = async (req, res) => {
+  try {
+    const result = await Course.find();
+    res.send({ response: result, message: "Contacts found" });
+  } catch (error) {
+    res.status(400).send({ message: "can not get contacts" });
+  }
+};
 exports.getCoursesByCategory = async (req, res) => {
   const PAGE_SIZE = 1;
   const page = parseInt(req.query.page || "0");
@@ -43,7 +51,7 @@ exports.getCoursesByCategory = async (req, res) => {
   }
   console.log(req.query);
 
-  if (req.query.category && req.query.category != "All") {
+  if (req.query.category != "All") {
     query.category = req.query.category;
   }
   console.log(query);
@@ -53,7 +61,7 @@ exports.getCoursesByCategory = async (req, res) => {
       .skip(PAGE_SIZE * page);
 
     if (result.length === 0) {
-      res.status(400).send({ msg: "there is no this category" });
+      res.status(406).send({ msg: "there is no this category" });
     } else {
       res.send({
         message: "courses found",

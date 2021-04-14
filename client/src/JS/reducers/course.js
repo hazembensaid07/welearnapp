@@ -3,6 +3,7 @@ import {
   GET_COURSES_FAIL,
   GET_COURSE_BY_ID,
   GET_COURSES_BY_CATEGORY,
+  GET_ALL_COURSES,
 } from "../constants/course";
 
 const initState = {
@@ -29,6 +30,13 @@ export const courseReducer = (state = initState, { type, payload }) => {
         loadCourses: false,
         errors: [],
       };
+    case GET_ALL_COURSES:
+      return {
+        ...state,
+        courses: payload,
+        loadCourses: false,
+      };
+
     case GET_COURSES_FAIL:
       return {
         ...state,
