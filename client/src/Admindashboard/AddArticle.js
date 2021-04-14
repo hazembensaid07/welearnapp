@@ -37,6 +37,15 @@ const AddArticle = () => {
           />
         </Form.Field>
         <Form.Field>
+          <label> writer</label>
+          <input
+            placeholder="writer"
+            value={article.imgSrc}
+            name="imgSrc"
+            onChange={handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
           <label>date</label>
           <input
             placeholder="date"

@@ -55,6 +55,4 @@ router.delete("/blog/:id", controllers.deleteArticle);
  * @access : public/private
  */
 
-router.put("/:id", controllers.updateArticle);
-
 module.exports = router;
