@@ -35,6 +35,10 @@ const articleSchema = new schema({
     type: String,
     required: false,
   },
+  title: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = article = mongoose.model("article", articleSchema);

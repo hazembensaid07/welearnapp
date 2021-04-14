@@ -8,10 +8,15 @@ import Comment from "./Comment.js";
 const BlogSingle = ({ location }) => {
   const [article, setArticle] = useState(location.state.article);
   const dispatch = useDispatch();
-  const comments = useSelector((state) => state.commentsReducer.comments);
   const loadComments = useSelector(
     (state) => state.commentsReducer.loadComments
   );
+  const commentsss = useSelector((state) => state.commentsReducer.comments);
+
+  useEffect(() => {
+    dispatch(getComments(comment.articleID));
+    console.log(commentsss);
+  }, []);
 
   const [comment, setComment] = useState({
     msg: "",
@@ -20,10 +25,7 @@ const BlogSingle = ({ location }) => {
     email: "",
     articleID: article._id,
   });
-
-  useEffect(() => {
-    dispatch(getComments(comment.articleID));
-  }, []);
+  const comments = [];
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -76,20 +78,15 @@ const BlogSingle = ({ location }) => {
                       <cite>- {article.writer}</cite>
                     </blockquote>
                   </div>
+                  <h3 className="commment-title">Comments</h3>
+                  {loadComments ? (
+                    <h2>loading</h2>
+                  ) : comments.length == 0 ? (
+                    <h2>there is no data show</h2>
+                  ) : (
+                    comments.map((el) => <Comment key={el._id} comment={el} />)
+                  )}
 
-                  <div className="comments">
-                    {console.log(comments)}
-                    <h3 className="commment-title">Comments</h3>
-                    {loadComments ? (
-                      <h2>loading</h2>
-                    ) : comments.length == 0 ? (
-                      <h2>there is no data show</h2>
-                    ) : (
-                      comments.map((el) => (
-                        <Comment key={el._id} comment={el} />
-                      ))
-                    )}
-                  </div>
                   <div className="comments-form p-lg-5 mt-4 ">
                     <h3>Leave a comment </h3>
                     <p>
