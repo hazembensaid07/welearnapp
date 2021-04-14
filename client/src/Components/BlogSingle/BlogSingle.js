@@ -11,11 +11,10 @@ const BlogSingle = ({ location }) => {
   const loadComments = useSelector(
     (state) => state.commentsReducer.loadComments
   );
-  const commentsss = useSelector((state) => state.commentsReducer.comments);
+  const comments = useSelector((state) => state.commentsReducer.comments);
 
   useEffect(() => {
     dispatch(getComments(comment.articleID));
-    console.log(commentsss);
   }, []);
 
   const [comment, setComment] = useState({
@@ -25,7 +24,6 @@ const BlogSingle = ({ location }) => {
     email: "",
     articleID: article._id,
   });
-  const comments = [];
 
   const handleChange = (e) => {
     e.preventDefault();
