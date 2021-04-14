@@ -22,6 +22,8 @@ const CourseList = () => {
         style={{
           display: "flex",
           justifyContent: "space-between",
+          alignItems: "stretch",
+          height: "600px",
         }}
       >
         {loadCourses ? (
