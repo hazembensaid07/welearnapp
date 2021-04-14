@@ -76,8 +76,8 @@ exports.getCoursesByCategory = async (req, res) => {
 
 exports.getCourseById = async (req, res) => {
   try {
-    const { _id } = req.params;
-    const result = await Course.findOne(_id);
+    const id = req.params.id;
+    const result = await Course.findById(id);
     console.log(result);
     if (!result) {
       res.status(400).send({ msg: "there " });
