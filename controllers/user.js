@@ -11,6 +11,14 @@ exports.read = async (req, res) => {
     res.send("failed");
   }
 };
+exports.getAllUsers = async (req, res) => {
+  try {
+    const result = await User.find();
+    res.send({ response: result, message: "users found" });
+  } catch (error) {
+    res.status(400).send({ message: "can not get users" });
+  }
+};
 
 exports.update = (req, res) => {
   // console.log('UPDATE USER - req.user', req.user, 'UPDATE DATA', req.body);
@@ -52,4 +60,14 @@ exports.update = (req, res) => {
       res.json(updatedUser);
     });
   });
+};
+exports.deleteUsers = async (req, res) => {
+  try {
+    const result = await User.deleteOne({ _id: req.params.id });
+    result.n
+      ? res.status(200).send({ message: "user deleted" })
+      : res.send("there is no user with this id");
+  } catch (error) {
+    res.send("No user exist with that ID");
+  }
 };

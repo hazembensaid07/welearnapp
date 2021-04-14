@@ -12,6 +12,10 @@ import Forgot from "./Components/auth/Forgot";
 import Reset from "./Components/auth/Reset";
 import Mycourses from "./Components/auth/Mycourses";
 import CourseContent from "./Components/auth/CourseContent";
+import UserList from "./Admindashboard/UserList";
+import AdminDash from "./Admindashboard/adminLand";
+import BlogList from "./Admindashboard/BlogList";
+import AddArticle from "./Admindashboard/AddArticle";
 
 import CourseView from "./Pages/CourseView";
 import About from "./Pages/About";
@@ -47,10 +51,15 @@ function App() {
           <Route exact path="/auth/activate/:token" component={Activate} />
           <PrivateRoute exact path="/private" component={Private} />
           <AdminRoute exact path="/admin" component={Admin} />
+          <AdminRoute exact path="/userlist" component={UserList} />
+          <AdminRoute exact path="/bloglist" component={BlogList} />
+          <AdminRoute exact path="/addArticle" component={AddArticle} />
+          <AdminRoute exact path="/admindash" component={AdminDash} />
           <PrivateRoute exact path="/myCourses" component={Mycourses} />
           <PrivateRoute exact path="/courseContent" component={CourseContent} />
 
           <Route exact path="/auth/password/forgot" component={Forgot} />
+
           <Route exact path="/auth/password/reset/:token" component={Reset} />
           <Route path="/*" component={NotFound} />
         </Switch>

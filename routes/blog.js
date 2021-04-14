@@ -45,7 +45,7 @@ router.get("/blog:id", controllers.getArticleByID);
  * @access : public/private
  */
 
-router.delete("/blog:id", controllers.deleteArticle);
+router.delete("/blog/:id", controllers.deleteArticle);
 
 /**
  * @description : Update an article by id

@@ -177,9 +177,20 @@ const Layout = ({ children, match, history }) => {
                     <Link
                       className="btn btn-main btn-sm"
                       style={isActive("/private")}
-                      to="/private"
+                      to="/admin"
                     >
                       Your Profile
+                    </Link>
+                  </div>
+                )}
+                {isAuth() && isAuth().role === "admin" && (
+                  <div className="header-login">
+                    <Link
+                      className="btn btn-main btn-sm"
+                      style={isActive("/private")}
+                      to="/admindash"
+                    >
+                      Admin Dashboard
                     </Link>
                   </div>
                 )}

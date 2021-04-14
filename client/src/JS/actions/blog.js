@@ -26,6 +26,15 @@ export const addArticle = (article) => async (dispatch) => {
     dispatch({ type: GET_BLOG_FAIL, payload: error });
   }
 };
+export const deleteArticle = (id) => async (dispatch) => {
+  try {
+    const result = await axios.delete(`http://localhost:8000/api/blog/${id}`);
+    console.log(result);
+    dispatch(getBlog());
+  } catch (error) {
+    dispatch({ type: GET_BLOG_FAIL, payload: error });
+  }
+};
 
 export const addSumComment = () => async (dispatch) => {
   dispatch({ type: ADD_SUM });

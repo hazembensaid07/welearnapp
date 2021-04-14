@@ -4,6 +4,7 @@ import { courseReducer } from "./course";
 import { blogReducer } from "./blog";
 import { commentsReducer } from "./comments";
 import { courseEnrollReducer } from "./courseEnroll";
+import { userReducer } from "./user";
 
 export const rootReducer = combineReducers({
   contactReducer,
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
   blogReducer,
   commentsReducer,
   courseEnrollReducer,
+  userReducer,
 });
