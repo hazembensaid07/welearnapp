@@ -5,12 +5,14 @@ import { getCourseById } from "../../JS/actions/course";
 import { addCourse } from "../../JS/actions/courseEnroll";
 import handleScroll from "../scroll.js";
 
-const CourseDetails = ({ id }) => {
+const CourseDetails = ({ location }) => {
   const dispatch = useDispatch();
   const course = useSelector((state) => state.courseReducer.course);
   const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
+
+  console.log(location);
   useEffect(() => {
-    dispatch(getCourseById(id));
+    dispatch(getCourseById(location.state.id));
   }, []);
   return (
     <div>
@@ -139,8 +141,11 @@ const CourseDetails = ({ id }) => {
                           const user = localStorage.getItem("user");
                           const enroll = {};
                           enroll.user = user;
+                          console.log(typeof user);
 
                           enroll.course = course;
+                          console.log(user);
+                          console.log(typeof enroll.user);
 
                           dispatch(addCourse(enroll));
                         }}

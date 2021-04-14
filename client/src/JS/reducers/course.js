@@ -35,6 +35,7 @@ export const courseReducer = (state = initState, { type, payload }) => {
         ...state,
         courses: payload,
         loadCourses: false,
+        errors: [],
       };
 
     case GET_COURSES_FAIL:

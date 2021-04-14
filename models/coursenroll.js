@@ -6,7 +6,7 @@ const schema = mongoose.Schema;
 
 const coursenrollSchema = new schema({
   user: {
-    type: Object,
+    type: String,
     required: true,
   },
   course: {
