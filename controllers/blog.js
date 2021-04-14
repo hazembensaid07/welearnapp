@@ -12,7 +12,7 @@ exports.addArticle = async (req, res) => {
 exports.getAllArticles = async (req, res) => {
   try {
     const result = await article.find();
-    res.send({ response: result, message: "Articles found" });
+    res.status(200).send({ response: result, message: "Articles found" });
   } catch (error) {
     res.status(400).send({ message: "can not get the articles" });
   }
@@ -27,20 +27,9 @@ exports.getArticleByID = async (req, res) => {
   }
 };
 
-exports.updateArticle = async (req, res) => {
-  try {
-    const result = await Contact.updateOne(
-      { _id: req.params.id },
-      { $set: { ...req.body } }
-    );
-  } catch (error) {
-    res.status(400).send("No Article exist with that ID");
-  }
-};
-
 exports.deleteArticle = async (req, res) => {
   try {
-    const result = await Contact.deleteOne({ _id: req.params.id });
+    const result = await article.deleteOne({ _id: req.params.id });
     result.n
       ? res.status(200).send({ message: "Article deleted" })
       : res.send("there is no article with this id");

@@ -13,7 +13,7 @@ const {
 
 router.get("/user/:id", requireSignin, read);
 router.put("/user/update", requireSignin, update);
-router.put("/admin/update", requireSignin, adminMiddleware, update);
-router.get("/admin/users", requireSignin, adminMiddleware, getAllUsers);
-router.delete("/admin/user/:id", requireSignin, adminMiddleware, deleteUsers);
+router.put("/admin/update", requireSignin, update);
+router.get("/admin/users", requireSignin, getAllUsers);
+router.delete("/admin/user/:id", requireSignin, deleteUsers);
 module.exports = router;
