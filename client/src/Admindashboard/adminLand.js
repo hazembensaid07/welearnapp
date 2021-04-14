@@ -18,6 +18,11 @@ const AdminLand = () => {
           {" "}
           <h1>Blog</h1>{" "}
         </Link>
+
+        <Link to="/courselist">
+          {" "}
+          <h1>Courses</h1>{" "}
+        </Link>
       </div>
     </div>
   );
