@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCourses } from "../JS/actions/course";
+import { getAllCourses } from "../JS/actions/course";
 import CourseCardClone from "./courseCardClone";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,8 @@ const CourseList = () => {
   const courses = useSelector((state) => state.courseReducer.courses);
   const loadCourses = useSelector((state) => state.courseReducer.loadCourses);
   useEffect(() => {
-    dispatch(getCourses("", "", ""));
+    dispatch(getAllCourses());
+    console.log(courses);
   }, []);
   return (
     <div>
