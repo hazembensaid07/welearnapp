@@ -50,6 +50,7 @@ export const courseReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         course: payload,
+        loadCourses: false,
       };
 
     default:
