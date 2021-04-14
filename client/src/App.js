@@ -15,6 +15,7 @@ import CourseContent from "./Components/auth/CourseContent";
 import UserList from "./Admindashboard/UserList";
 import AdminDash from "./Admindashboard/adminLand";
 import CourseList from "./Admindashboard/CourseList";
+import CourseDetails from "./Components/CourseDetails/CourseDetails";
 
 import BlogList from "./Admindashboard/BlogList";
 import AddArticle from "./Admindashboard/AddArticle";
@@ -43,7 +44,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/aboutUs" component={About} />
           <Route path="/courses" component={CourseByCategory} />
-          <Route path="/courseDetails" component={CourseView} />
+          <Route path="/courseDetails" component={CourseDetails} />
           <Route exact path="/home" component={home} />
           <Route path="/contact" component={Contact} />
           <Route path="/blog" component={Blog} />

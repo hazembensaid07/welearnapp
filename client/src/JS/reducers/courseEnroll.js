@@ -2,7 +2,6 @@ import {
   GET_COURSENROLL_LOAD,
   GET_COURSENROLL_SUCCESS,
   GET_COURSENROLL_FAIL,
-  ADD_SUM,
 } from "../constants/courseEnroll";
 
 // initial state
@@ -25,6 +24,8 @@ export const courseEnrollReducer = (
         loadCourseEnroll: false,
         courseEnroll: payload,
       };
+      console.log(state.courseEnroll);
+
     case GET_COURSENROLL_FAIL:
       return { ...state, loadCourseEnroll: false, errors: payload };
 

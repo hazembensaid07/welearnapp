@@ -28,7 +28,7 @@ export const getCourses = (category, name, pageNumber) => async (dispatch) => {
 export const getCourseById = (id) => async (dispatch) => {
   dispatch({ type: GET_COURSES_LOAD });
   try {
-    const res = await axios.get(`http://localhost:8000/api/course/${id}`);
+    const res = await axios.get(`http://localhost:8000/api/coursee/${id}`);
     dispatch({
       type: GET_COURSE_BY_ID,
       payload: res.data.result,
