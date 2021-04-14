@@ -4,6 +4,7 @@ import {
   GET_BLOG_FAIL,
   ADD_SUM,
 } from "../constants/blog";
+import { getCookie } from "../../Components/auth/helpers";
 import axios from "axios";
 
 export const getBlog = () => async (dispatch) => {
@@ -19,17 +20,32 @@ export const getBlog = () => async (dispatch) => {
 };
 
 export const addArticle = (article) => async (dispatch) => {
+  const token = getCookie("token");
+  const options = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
   try {
-    const result = await axios.post("http://localhost:8000/api/blog", article);
+    const result = await axios.post(
+      "http://localhost:8000/api/blog",
+      article,
+      options
+    );
     dispatch(getBlog());
   } catch (error) {
     dispatch({ type: GET_BLOG_FAIL, payload: error });
   }
 };
+
 export const deleteArticle = (id) => async (dispatch) => {
+  const token = getCookie("token");
+  const options = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
   try {
-    const result = await axios.delete(`http://localhost:8000/api/blog/${id}`);
-    console.log(result);
+    const result = axios.delete(
+      `http://localhost:8000/api/blog/${id}`,
+      options
+    );
     dispatch(getBlog());
   } catch (error) {
     dispatch({ type: GET_BLOG_FAIL, payload: error });

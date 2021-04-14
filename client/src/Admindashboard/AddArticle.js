@@ -37,7 +37,7 @@ const AddArticle = () => {
           />
         </Form.Field>
         <Form.Field>
-          <label> writer</label>
+          <label>imgSrc</label>
           <input
             placeholder="writer"
             value={article.imgSrc}

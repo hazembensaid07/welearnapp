@@ -1,6 +1,6 @@
 const express = require("express");
 const controllers = require("../controllers/blog");
-
+const { requireSignin, adminMiddleware } = require("../controllers/auth");
 // express router
 const router = express.Router();
 
@@ -15,7 +15,7 @@ const Contact = require("../models/article");
  * @access : public/private
  */
 
-router.post("/blog", controllers.addArticle);
+router.post("/blog", requireSignin, controllers.addArticle);
 
 /**
  * @description : Get all  articles
@@ -45,7 +45,12 @@ router.get("/blog:id", controllers.getArticleByID);
  * @access : public/private
  */
 
-router.delete("/blog/:id", controllers.deleteArticle);
+router.delete(
+  "/blog/:id",
+  requireSignin,
+
+  controllers.deleteArticle
+);
 
 /**
  * @description : Update an article by id

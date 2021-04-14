@@ -4,21 +4,38 @@ import {
   GET_USERS_FAIL,
 } from "../constants/user";
 import axios from "axios";
-
-export const getUsers = () => async (dispatch) => {
+import { getCookie } from "../../Components/auth/helpers";
+export const getUsers = () => (dispatch) => {
   dispatch({ type: GET_USERS_LOAD });
-  try {
-    let result = await axios.get("http://localhost:8000/api/admin/users");
-    dispatch({ type: GET_USERS_SUCCESS, payload: result.data.response });
-  } catch (error) {
-    dispatch({ type: GET_USERS_FAIL, payload: error });
-    console.log(error);
-  }
+
+  const token = getCookie("token");
+
+  axios({
+    method: "GET",
+    url: "http://localhost:8000/api/admin/users",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      dispatch({ type: GET_USERS_SUCCESS, payload: response.data.response });
+    })
+    .catch((error) => {
+      dispatch({ type: GET_USERS_FAIL, payload: error });
+      console.log(error);
+    });
 };
 
 export const deleteUser = (id) => (dispatch) => {
-  axios
-    .delete(`/api/admin/user/${id}`)
+  const token = getCookie("token");
+
+  axios({
+    method: "DELETE",
+    url: `http://localhost:8000/api/admin/user/${id}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
     .then((response) => dispatch(getUsers()))
     .catch((err) => console.log(err));
 };

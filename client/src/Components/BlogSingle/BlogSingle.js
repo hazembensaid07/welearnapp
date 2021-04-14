@@ -15,6 +15,7 @@ const BlogSingle = ({ location }) => {
 
   useEffect(() => {
     dispatch(getComments(comment.articleID));
+    console.log(comments);
   }, []);
 
   const [comment, setComment] = useState({
