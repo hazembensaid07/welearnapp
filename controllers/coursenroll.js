@@ -22,9 +22,7 @@ exports.addCourse = async (req, res) => {
     console.log(req.body);
 
     const response = await newCourse.save();
-    console.log(
-      "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
-    );
+    console.log("hhhhhhhhhhhhhhhhhh");
     console.log(response);
 
     res.status(200).send(response);
