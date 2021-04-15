@@ -65,7 +65,7 @@ export const getAllCourses = () => async (dispatch) => {
 
     dispatch({
       type: GET_ALL_COURSES,
-      payload: res.data.result,
+      payload: res.data.response,
     });
   } catch (error) {
     dispatch({

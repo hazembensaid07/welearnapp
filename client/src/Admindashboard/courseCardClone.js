@@ -39,6 +39,7 @@ const CourseCardClone = ({ course, key }) => {
                   {course.name}
                 </Link>
               </h4>
+              {console.log(course._id)}
               <button onClick={() => dispatch(deleteCourse(course._id))}>
                 Delete
               </button>

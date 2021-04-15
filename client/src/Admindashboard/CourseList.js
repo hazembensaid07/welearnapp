@@ -14,26 +14,24 @@ const CourseList = () => {
     console.log(courses);
   }, []);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+
+        flexDirection: "column",
+      }}
+    >
       <Link to="/addcourse">
         <button>Add Courses</button>
       </Link>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "stretch",
-          height: "600px",
-        }}
-      >
-        {loadCourses ? (
-          <h2>loading</h2>
-        ) : courses.length == 0 ? (
-          <h2>there is no data show</h2>
-        ) : (
-          courses.map((el) => <CourseCardClone key={el._id} course={el} />)
-        )}
-      </div>
+
+      {loadCourses ? (
+        <h2>loading</h2>
+      ) : courses.length == 0 ? (
+        <h2>there is no data show</h2>
+      ) : (
+        courses.map((el) => <CourseCardClone key={el._id} course={el} />)
+      )}
     </div>
   );
 };
