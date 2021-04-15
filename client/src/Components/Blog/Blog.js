@@ -1,10 +1,9 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect } from "react";
 import Articleel from "./Articleel";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getBlog } from "../../JS/actions/blog";
-import { Link } from "react-router-dom";
-import handleScroll from "../scroll.js";
+
 const Blog = () => {
   const dispatch = useDispatch();
   const blog = useSelector((state) => state.blogReducer.blog);

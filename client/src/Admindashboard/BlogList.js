@@ -10,7 +10,7 @@ const UserList = () => {
 
   useEffect(() => {
     dispatch(getBlog());
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <Link to={`/addArticle`}>

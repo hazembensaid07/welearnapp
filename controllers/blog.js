@@ -2,7 +2,7 @@ exports.addArticle = async (req, res) => {
   try {
     const newArticle = new article(req.body);
     const response = await newArticle.save();
-    console.log(response);
+
     res.status(200).send(response);
   } catch (error) {
     res.status(400).send("can not save the article");

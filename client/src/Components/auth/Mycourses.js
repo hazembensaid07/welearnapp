@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addCourse, getCourses } from "../../JS/actions/courseEnroll";
-import handleScroll from "../scroll.js";
+import { getCourses } from "../../JS/actions/courseEnroll";
+
 import MycoursesCard from "./MycoursesCard";
 
 const Mycourses = () => {

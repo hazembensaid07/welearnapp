@@ -1,7 +1,5 @@
 import React from "react";
-import img1 from "../../assets/images/clients/test-1.jpg";
-import img2 from "../../assets/images/clients/test-2.jpg";
-import img3 from "../../assets/images/clients/test-3.jpg";
+
 const Testimonials = () => {
   return (
     <div>

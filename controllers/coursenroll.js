@@ -16,14 +16,8 @@ exports.getCourses = async (req, res) => {
 exports.addCourse = async (req, res) => {
   try {
     const newCourse = new Coursenroll(req.body);
-    console.log(
-      "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
-    );
-    console.log(req.body);
 
     const response = await newCourse.save();
-    console.log("hhhhhhhhhhhhhhhhhh");
-    console.log(response);
 
     res.status(200).send(response);
   } catch (error) {
