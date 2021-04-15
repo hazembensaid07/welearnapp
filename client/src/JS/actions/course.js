@@ -44,7 +44,7 @@ export const getCourseById = (id) => async (dispatch) => {
 
 export const deleteCourse = (id) => (dispatch) => {
   axios
-    .delete(`http://localhost:8000/api/course/${id}`)
+    .delete(`http://localhost:8000/api/coursee/${id}`)
     .then((response) => dispatch(getAllCourses()))
     .catch((err) => console.log(err));
 };
