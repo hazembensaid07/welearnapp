@@ -131,6 +131,15 @@ const AddCourse = () => {
             onChange={handleChange}
           />
         </Form.Field>
+        <Form.Field>
+          <label>price</label>
+          <input
+            placeholder="vidSrc"
+            name="vidSrc"
+            value={course.vidSrc}
+            onChange={handleChange}
+          />
+        </Form.Field>
         <Link to="/CourseList">
           <Button type="submit" onClick={handleCourse}>
             add

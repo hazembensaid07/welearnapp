@@ -22,7 +22,7 @@ const CourseContent = ({ location }) => {
         className="youtube"
         width={620}
         height={500}
-        src={"https://www.youtube.com/embed/w7ejDZ8SWv8"}
+        src={course.vidSrc}
         frameBorder={0}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen

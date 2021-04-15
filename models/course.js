@@ -29,6 +29,10 @@ const courseSchema = new schema({
     type: String,
     required: true,
   },
+  vidSrc: {
+    type: String,
+    required: true,
+  },
   instructor: {
     type: String,
     required: true,
