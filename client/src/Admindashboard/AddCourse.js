@@ -132,7 +132,7 @@ const AddCourse = () => {
           />
         </Form.Field>
         <Form.Field>
-          <label>price</label>
+          <label>video Src</label>
           <input
             placeholder="vidSrc"
             name="vidSrc"

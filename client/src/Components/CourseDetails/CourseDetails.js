@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCourseById } from "../../JS/actions/course";
 import { addCourse } from "../../JS/actions/courseEnroll";
+import { isAuth } from "../auth/helpers";
 import handleScroll from "../scroll.js";
 
 const CourseDetails = ({ location }) => {
@@ -131,31 +132,45 @@ const CourseDetails = ({ location }) => {
                         </li>
                       </ul>
                       <div className="buy-btn">
-                        <Link
-                          onClick={handleScroll}
-                          className="read-more"
-                          to={{
-                            pathname: `/myCourses`,
-                          }}
-                        >
-                          <button
-                            className="button button-enroll-course btn btn-primary"
-                            onClick={() => {
-                              const user = localStorage.getItem("user");
-                              const enroll = {};
-                              enroll.user = user;
-                              console.log(typeof user);
-
-                              enroll.course = course;
-                              console.log(user);
-                              console.log(typeof enroll.user);
-
-                              dispatch(addCourse(enroll));
+                        {isAuth() ? (
+                          <Link
+                            onClick={handleScroll}
+                            className="read-more"
+                            to={{
+                              pathname: `/myCourses`,
                             }}
                           >
-                            Enroll Course
-                          </button>
-                        </Link>
+                            <button
+                              className="button button-enroll-course btn btn-primary"
+                              onClick={() => {
+                                const user = localStorage.getItem("user");
+                                const enroll = {};
+                                enroll.user = user;
+                                console.log(typeof user);
+
+                                enroll.course = course;
+                                console.log(user);
+                                console.log(typeof enroll.user);
+
+                                dispatch(addCourse(enroll));
+                              }}
+                            >
+                              Enroll Course
+                            </button>
+                          </Link>
+                        ) : (
+                          <Link
+                            onClick={handleScroll}
+                            className="read-more"
+                            to={{
+                              pathname: `/signin`,
+                            }}
+                          >
+                            <button className="button button-enroll-course btn btn-primary">
+                              Enroll Course
+                            </button>
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>
