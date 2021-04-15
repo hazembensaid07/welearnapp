@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Google from "./Google";
 import Facebook from "./Facebook";
 import "react-toastify/dist/ReactToastify.min.css";
-
+import scroll from "../scroll";
 const Signin = ({ history }) => {
   const [values, setValues] = useState({
     email: "",
@@ -121,7 +121,10 @@ const Signin = ({ history }) => {
                     className="woocommerce-button button woocommerce-form-login__submit"
                     name="login"
                     value="Log in"
-                    onClick={clickSubmit}
+                    onClick={(e) => {
+                      clickSubmit(e);
+                      scroll();
+                    }}
                   >
                     Log in
                   </button>
