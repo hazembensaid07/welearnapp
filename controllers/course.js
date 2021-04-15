@@ -92,9 +92,12 @@ exports.getCourseById = async (req, res) => {
 
 exports.deleteCourse = async (req, res) => {
   try {
-    console(req.params);
-    const result = await Contact.deleteOne({ _id: req.params.id });
-    res.status(200).send({ message: "user deleted" });
+    console.log(req.params.id);
+    const result = await Course.findOneAndDelete({ _id: req.params.id });
+    console.log(result);
+    result.n
+      ? res.status(200).send({ message: "user deleted" })
+      : res.send("there is no user with this id");
   } catch (error) {
     res.send("No contact exist with that ID");
   }
