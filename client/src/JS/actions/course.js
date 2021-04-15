@@ -6,6 +6,7 @@ import {
   GET_COURSES_BY_CATEGORY,
   GET_ALL_COURSES,
 } from "../constants/course";
+import { getCookie } from "../../Components/auth/helpers";
 export const getCourses = (category, name, pageNumber) => async (dispatch) => {
   dispatch({ type: GET_COURSES_LOAD });
   try {
@@ -43,15 +44,27 @@ export const getCourseById = (id) => async (dispatch) => {
 };
 
 export const deleteCourse = (id) => (dispatch) => {
+  const token = getCookie("token");
+  const options = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
   axios
-    .delete(`http://localhost:8000/api/coursee/${id}`)
+    .delete(`http://localhost:8000/api/coursee/${id}`, options)
     .then((response) => dispatch(getAllCourses()))
     .catch((err) => console.log(err));
 };
 
 export const addCourse = (course) => async (dispatch) => {
   try {
-    const result = await axios.post("http://localhost:8000/api/course", course);
+    const token = getCookie("token");
+    const options = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const result = await axios.post(
+      "http://localhost:8000/api/course",
+      course,
+      options
+    );
     dispatch(getAllCourses());
   } catch (error) {
     dispatch({ type: GET_COURSES_FAIL, payload: error });

@@ -4,12 +4,17 @@ import {
   GET_COURSENROLL_FAIL,
 } from "../constants/courseEnroll";
 import axios from "axios";
-
+import { getCookie } from "../../Components/auth/helpers";
 export const getCourses = (user) => async (dispatch) => {
   dispatch({ type: GET_COURSENROLL_LOAD });
   try {
+    const token = getCookie("token");
+    const options = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     let result = await axios.get(
-      `http://localhost:8000/api/coursenroll?user=${user}`
+      `http://localhost:8000/api/coursenroll?user=${user}`,
+      options
     );
     console.log(result.data.response);
     dispatch({ type: GET_COURSENROLL_SUCCESS, payload: result.data.response });
@@ -21,9 +26,14 @@ export const getCourses = (user) => async (dispatch) => {
 
 export const addCourse = (enroll) => async (dispatch) => {
   try {
+    const token = getCookie("token");
+    const options = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     const result = await axios.post(
       "http://localhost:8000/api/coursenroll",
-      enroll
+      enroll,
+      options
     );
     console.log(result);
     dispatch(getCourses(enroll.user));
