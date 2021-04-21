@@ -24,7 +24,7 @@ const Mycourses = () => {
           <div className="row justify-content-center">
             <div className="col-lg-8 col-xl-8">
               <div className="title-block">
-                <h1>Your Courses</h1>
+                <h1>My Courses</h1>
               </div>
             </div>
           </div>
