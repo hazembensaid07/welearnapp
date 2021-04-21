@@ -3,6 +3,7 @@ const controllers = require("../controllers/comments");
 
 // express router
 const router = express.Router();
+const { requireSignin } = require("../controllers/auth");
 
 /**
  * @description : comment a blog post
@@ -12,7 +13,7 @@ const router = express.Router();
  * @access : public/private
  */
 
-router.post("/comments", controllers.sendComment);
+router.post("/comments", requireSignin, controllers.sendComment);
 
 /**
  * @description : display all comments

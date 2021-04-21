@@ -4,6 +4,7 @@ import {
   GET_COMMENTS_FAIL,
   ADD_SUM,
 } from "../constants/comments";
+import { getCookie } from "../../Components/auth/helpers";
 import axios from "axios";
 
 export const getComments = (id) => async (dispatch) => {
@@ -20,9 +21,14 @@ export const getComments = (id) => async (dispatch) => {
 
 export const sendComment = (comment) => async (dispatch) => {
   try {
+    const token = getCookie("token");
+    const options = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     const result = await axios.post(
       "http://localhost:8000/api/comments",
-      comment
+      comment,
+      options
     );
     console.log(result);
     dispatch(getComments(comment.articleID));

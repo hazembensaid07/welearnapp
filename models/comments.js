@@ -9,14 +9,6 @@ const commentsSchema = new schema({
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    required: true,
-  },
-  website: {
-    type: String,
-    required: false,
-  },
   msg: {
     type: String,
     required: true,

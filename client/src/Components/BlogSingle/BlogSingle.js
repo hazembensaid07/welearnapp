@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getComments, sendComment } from "../../JS/actions/comments";
 
 import Comment from "./Comment.js";
-
+import { isAuth } from "../auth/helpers";
 const BlogSingle = ({ location }) => {
   const [article, setArticle] = useState(location.state.article);
   const dispatch = useDispatch();
@@ -20,9 +20,9 @@ const BlogSingle = ({ location }) => {
 
   const [comment, setComment] = useState({
     msg: "",
-    website: "",
+
     name: "",
-    email: "",
+
     articleID: article._id,
   });
 
@@ -85,88 +85,56 @@ const BlogSingle = ({ location }) => {
                   ) : (
                     comments.map((el) => <Comment key={el._id} comment={el} />)
                   )}
+                  {isAuth() && (
+                    <div className="comments-form p-lg-5 mt-4 ">
+                      <h3>Leave a comment </h3>
 
-                  <div className="comments-form p-lg-5 mt-4 ">
-                    <h3>Leave a comment </h3>
-                    <p>
-                      Your email address will not be published. Required fields
-                      are marked *
-                    </p>
-                    <form className="comment_form">
-                      <div className="row form-row">
-                        <div className="col-lg-12">
-                          <div className="form-group">
-                            <textarea
-                              name="msg"
-                              value={comment.msg}
-                              id="msgt"
-                              cols={30}
-                              rows={6}
-                              placeholder="Comment"
-                              className="form-control"
-                              defaultValue={""}
-                              onChange={handleChange}
-                            />
+                      <form className="comment_form">
+                        <div className="row form-row">
+                          <div className="col-lg-12">
+                            <div className="form-group">
+                              <textarea
+                                name="msg"
+                                value={comment.msg}
+                                id="msgt"
+                                cols={20}
+                                rows={4}
+                                placeholder="Comment"
+                                className="form-control"
+                                defaultValue={""}
+                                onChange={handleChange}
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Website"
-                              name="website"
-                              value={comment.website}
-                              onChange={handleChange}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Name"
-                              name="name"
-                              value={comment.name}
-                              onChange={handleChange}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Email"
-                              name="email"
-                              value={comment.email}
-                              onChange={handleChange}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="form-group">
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                dispatch(sendComment(comment));
 
-                                setComment({
-                                  name: "",
-                                  email: "",
-                                  website: "",
-                                  msg: "",
-                                });
-                              }}
-                            >
-                              Comment
-                            </button>
+                          <div className="col-lg-12">
+                            <div className="form-group">
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  dispatch(
+                                    sendComment({
+                                      msg: comment.msg,
+                                      name: isAuth().name,
+                                      articleID: comment.articleID,
+                                    })
+                                  );
+
+                                  setComment({
+                                    name: "",
+
+                                    msg: "",
+                                  });
+                                }}
+                              >
+                                Comment
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </form>
-                  </div>
+                      </form>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
