@@ -15,10 +15,13 @@ exports.getCourses = async (req, res) => {
 
 exports.addCourse = async (req, res) => {
   try {
-    const newCourse = new Coursenroll(req.body);
-
-    const response = await newCourse.save();
-
+    const courses = await Coursenroll.find();
+    let verif = courses.includes(req.body);
+    const response = "";
+    if (!verif) {
+      const newCourse = new Coursenroll(req.body);
+      response = await newCourse.save();
+    }
     res.status(200).send(response);
   } catch (error) {
     res.status("can't save it");

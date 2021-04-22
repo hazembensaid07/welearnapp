@@ -35,7 +35,7 @@ export const addCourse = (enroll) => async (dispatch) => {
       enroll,
       options
     );
-    console.log(result);
+
     dispatch(getCourses(enroll.user));
   } catch (error) {
     dispatch({ type: GET_COURSENROLL_FAIL, payload: error });
