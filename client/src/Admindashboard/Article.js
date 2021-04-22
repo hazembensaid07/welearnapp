@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Button, Card } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
-import { deleteArticle } from "../JS/actions/blog";
-
+import { deleteArticle, getArticleByID } from "../JS/actions/blog";
+import { toggleTrue } from "../JS/actions/edit";
 const Article = ({ article }) => {
   const dispatch = useDispatch();
   return (
@@ -22,6 +23,17 @@ const Article = ({ article }) => {
             >
               Delete
             </Button>
+            <Link to={`/addArticle`}>
+              <Button
+                color="red"
+                onClick={() => {
+                  dispatch(toggleTrue());
+                  dispatch(getArticleByID(article._id));
+                }}
+              >
+                edit{" "}
+              </Button>
+            </Link>
           </div>
         </Card.Content>
       </Card>

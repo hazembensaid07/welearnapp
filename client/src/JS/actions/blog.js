@@ -2,7 +2,7 @@ import {
   GET_BLOG_LOAD,
   GET_BLOG_SUCCESS,
   GET_BLOG_FAIL,
-  ADD_SUM,
+  GET_BLOG_ID,
 } from "../constants/blog";
 import { getCookie } from "../../Components/auth/helpers";
 import axios from "axios";
@@ -52,6 +52,20 @@ export const deleteArticle = (id) => async (dispatch) => {
   }
 };
 
-export const addSumComment = () => async (dispatch) => {
-  dispatch({ type: ADD_SUM });
+export const editArticle = (id, user) => (dispatch) => {
+  axios
+    .put(`http://localhost:8000/api/blog/${id}`, user)
+    .then((response) => dispatch(getBlog()))
+    .catch((err) => console.log(err));
+};
+
+export const getArticleByID = (id) => async (dispatch) => {
+  dispatch({ type: GET_BLOG_LOAD });
+  try {
+    let result = await axios.get(`http://localhost:8000/api/blog/${id}`);
+    dispatch({ type: GET_BLOG_ID, payload: result.data.response });
+  } catch (error) {
+    dispatch({ type: GET_BLOG_FAIL, payload: error });
+    console.log(error);
+  }
 };
