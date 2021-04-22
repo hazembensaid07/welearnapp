@@ -137,7 +137,7 @@ const CourseDetails = ({ location }) => {
                             onClick={handleScroll}
                             className="read-more"
                             to={{
-                              pathname: `/myCourses`,
+                              pathname: `/payment`,
                             }}
                           >
                             <button

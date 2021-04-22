@@ -7,6 +7,7 @@ import Activate from "./Components/auth/Activate";
 import Private from "./core/Private";
 import Admin from "./core/Admin";
 import PrivateRoute from "./Components/auth/PrivateRoute";
+import Payment from "./Components/auth/payment/Pyament";
 import AdminRoute from "./Components/auth/AdminRoute";
 import Forgot from "./Components/auth/Forgot";
 import Reset from "./Components/auth/Reset";
@@ -54,6 +55,7 @@ function App() {
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/auth/activate/:token" component={Activate} />
           <PrivateRoute exact path="/private" component={Private} />
+
           <AdminRoute exact path="/admin" component={Admin} />
           <AdminRoute exact path="/userlist" component={UserList} />
           <AdminRoute exact path="/bloglist" component={BlogList} />
@@ -64,6 +66,7 @@ function App() {
 
           <PrivateRoute exact path="/myCourses" component={Mycourses} />
           <PrivateRoute exact path="/courseContent" component={CourseContent} />
+          <PrivateRoute exact path="/payment" component={Payment} />
 
           <Route exact path="/auth/password/forgot" component={Forgot} />
 
