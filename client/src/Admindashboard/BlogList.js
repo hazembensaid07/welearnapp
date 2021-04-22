@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Article from "./Article";
 import { Link } from "react-router-dom";
+import { toggleFlase } from "../JS/actions/edit";
+
 const UserList = () => {
   const dispatch = useDispatch();
   const blog = useSelector((state) => state.blogReducer.blog);
@@ -10,11 +12,11 @@ const UserList = () => {
 
   useEffect(() => {
     dispatch(getBlog());
-  }, [dispatch]);
+  }, []);
   return (
     <div>
       <Link to={`/addArticle`}>
-        <button>Add</button>
+        <button onClick={() => dispatch(toggleFlase())}>Add</button>
       </Link>
 
       <div

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
 import { Button, Form } from "semantic-ui-react";
-import { addArticle } from "../JS/actions/blog";
+import { addArticle, editArticle } from "../JS/actions/blog";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
 const AddArticle = () => {
   const dispatch = useDispatch();
+  const edit = useSelector((state) => state.editReducer.edit);
+  const articles = useSelector((state) => state.blogReducer.article);
 
   const [article, setArticle] = useState({
     writer: "",
@@ -15,8 +18,24 @@ const AddArticle = () => {
     information: "",
     imgSrc: "",
   });
+  useEffect(() => {
+    edit
+      ? setArticle(articles)
+      : setArticle({
+          writer: "",
+          date: "",
+          title: "",
+          description: "",
+          quote: "",
+          information: "",
+          imgSrc: "",
+        });
+  }, [edit, articles]);
   const handleArticle = () => {
-    dispatch(addArticle(article));
+    if (!edit) {
+      dispatch(addArticle(article));
+    }
+    dispatch(editArticle(articles._id, article));
   };
 
   const handleChange = (e) => {
@@ -93,7 +112,7 @@ const AddArticle = () => {
         </Form.Field>
         <Link to="/bloglist">
           <Button type="submit" onClick={handleArticle}>
-            add
+            {edit ? "save changes" : "Add"}
           </Button>
         </Link>
       </Form>

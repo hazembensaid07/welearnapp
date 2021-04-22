@@ -35,7 +35,7 @@ router.get("/blog", controllers.getAllArticles);
  * @access : public/private
  */
 
-router.get("/blog:id", controllers.getArticleByID);
+router.get("/blog/:id", controllers.getArticleByID);
 
 /**
  * @description : Delete an article
@@ -59,5 +59,6 @@ router.delete(
  * @data : no data
  * @access : public/private
  */
+router.put("/blog/:id", controllers.updateArticle);
 
 module.exports = router;
