@@ -11,7 +11,7 @@ export const getCourses = (category, name, pageNumber) => async (dispatch) => {
   dispatch({ type: GET_COURSES_LOAD });
   try {
     const res = await axios.get(
-      `http://localhost:8000/api/course?category=${category}&search=${name}&page=${pageNumber}`
+      `api/course?category=${category}&search=${name}&page=${pageNumber}`
     );
 
     dispatch({
@@ -29,7 +29,7 @@ export const getCourses = (category, name, pageNumber) => async (dispatch) => {
 export const getCourseById = (id) => async (dispatch) => {
   dispatch({ type: GET_COURSES_LOAD });
   try {
-    const res = await axios.get(`http://localhost:8000/api/coursee/${id}`);
+    const res = await axios.get(`api/coursee/${id}`);
     dispatch({
       type: GET_COURSE_BY_ID,
       payload: res.data.result,
@@ -49,7 +49,7 @@ export const deleteCourse = (id) => (dispatch) => {
     headers: { Authorization: `Bearer ${token}` },
   };
   axios
-    .delete(`http://localhost:8000/api/coursee/${id}`, options)
+    .delete(`api/coursee/${id}`, options)
     .then((response) => dispatch(getAllCourses()))
     .catch((err) => console.log(err));
 };
@@ -61,7 +61,7 @@ export const addCourse = (course) => async (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     };
     const result = await axios.post(
-      "http://localhost:8000/api/course",
+      "api/course",
       course,
       options
     );
@@ -74,7 +74,7 @@ export const addCourse = (course) => async (dispatch) => {
 export const getAllCourses = () => async (dispatch) => {
   dispatch({ type: GET_COURSES_LOAD });
   try {
-    const res = await axios.get("http://localhost:8000/api/courses");
+    const res = await axios.get("api/courses");
 
     dispatch({
       type: GET_ALL_COURSES,

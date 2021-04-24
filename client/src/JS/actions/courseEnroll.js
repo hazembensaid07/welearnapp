@@ -12,10 +12,7 @@ export const getCourses = (user) => async (dispatch) => {
     const options = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    let result = await axios.get(
-      `http://localhost:8000/api/coursenroll?user=${user}`,
-      options
-    );
+    let result = await axios.get(`api/coursenroll?user=${user}`, options);
     console.log(result.data.response);
     dispatch({ type: GET_COURSENROLL_SUCCESS, payload: result.data.response });
   } catch (error) {
@@ -30,11 +27,7 @@ export const addCourse = (enroll) => async (dispatch) => {
     const options = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    const result = await axios.post(
-      "http://localhost:8000/api/coursenroll",
-      enroll,
-      options
-    );
+    const result = await axios.post("api/coursenroll", enroll, options);
 
     dispatch(getCourses(enroll.user));
   } catch (error) {

@@ -10,7 +10,7 @@ import axios from "axios";
 export const getComments = (id) => async (dispatch) => {
   dispatch({ type: GET_COMMENTS_LOAD });
   try {
-    let result = await axios.get(`http://localhost:8000/api/comments?id=${id}`);
+    let result = await axios.get(`api/comments?id=${id}`);
     console.log(result.data.response);
     dispatch({ type: GET_COMMENTS_SUCCESS, payload: result.data.response });
   } catch (error) {
@@ -25,11 +25,7 @@ export const sendComment = (comment) => async (dispatch) => {
     const options = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    const result = await axios.post(
-      "http://localhost:8000/api/comments",
-      comment,
-      options
-    );
+    const result = await axios.post("api/comments", comment, options);
     console.log(result);
     dispatch(getComments(comment.articleID));
   } catch (error) {

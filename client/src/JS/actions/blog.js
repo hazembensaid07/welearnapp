@@ -10,7 +10,7 @@ import axios from "axios";
 export const getBlog = () => async (dispatch) => {
   dispatch({ type: GET_BLOG_LOAD });
   try {
-    let result = await axios.get("http://localhost:8000/api/blog");
+    let result = await axios.get("api/blog");
     console.log(result);
     dispatch({ type: GET_BLOG_SUCCESS, payload: result.data.response });
   } catch (error) {
@@ -25,11 +25,7 @@ export const addArticle = (article) => async (dispatch) => {
     headers: { Authorization: `Bearer ${token}` },
   };
   try {
-    const result = await axios.post(
-      "http://localhost:8000/api/blog",
-      article,
-      options
-    );
+    const result = await axios.post("api/blog", article, options);
     dispatch(getBlog());
   } catch (error) {
     dispatch({ type: GET_BLOG_FAIL, payload: error });
@@ -42,10 +38,7 @@ export const deleteArticle = (id) => async (dispatch) => {
     headers: { Authorization: `Bearer ${token}` },
   };
   try {
-    const result = axios.delete(
-      `http://localhost:8000/api/blog/${id}`,
-      options
-    );
+    const result = axios.delete(`api/blog/${id}`, options);
     dispatch(getBlog());
   } catch (error) {
     dispatch({ type: GET_BLOG_FAIL, payload: error });
@@ -54,7 +47,7 @@ export const deleteArticle = (id) => async (dispatch) => {
 
 export const editArticle = (id, user) => (dispatch) => {
   axios
-    .put(`http://localhost:8000/api/blog/${id}`, user)
+    .put(`api/blog/${id}`, user)
     .then((response) => dispatch(getBlog()))
     .catch((err) => console.log(err));
 };
@@ -62,7 +55,7 @@ export const editArticle = (id, user) => (dispatch) => {
 export const getArticleByID = (id) => async (dispatch) => {
   dispatch({ type: GET_BLOG_LOAD });
   try {
-    let result = await axios.get(`http://localhost:8000/api/blog/${id}`);
+    let result = await axios.get(`api/blog/${id}`);
     dispatch({ type: GET_BLOG_ID, payload: result.data.response });
   } catch (error) {
     dispatch({ type: GET_BLOG_FAIL, payload: error });

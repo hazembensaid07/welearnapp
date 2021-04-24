@@ -12,7 +12,7 @@ export const getUsers = () => (dispatch) => {
 
   axios({
     method: "GET",
-    url: "http://localhost:8000/api/admin/users",
+    url: "api/admin/users",
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -31,7 +31,7 @@ export const deleteUser = (id) => (dispatch) => {
 
   axios({
     method: "DELETE",
-    url: `http://localhost:8000/api/admin/user/${id}`,
+    url: `api/admin/user/${id}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
