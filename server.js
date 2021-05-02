@@ -3,18 +3,21 @@ const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-require("dotenv").config();
 const path = require("path");
 const app = express();
 
 // connect to db
 mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
+  .connect(
+    process.env.DATABASE ||
+      "mongodb+srv://user:55145650@cluster0.k4rox.mongodb.net/Cluster0?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    }
+  )
   .then(() => console.log("DB connected"))
   .catch((err) => console.log("DB CONNECTION ERROR: ", err));
 
@@ -44,11 +47,14 @@ app.use("/api", blogRoutes);
 app.use("/api", commentsRoutes);
 app.use("/api", coursenrollRoutes);
 // serve static assets if an production
-if (process.env.NODE_ENV === "production")
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+} else {
+  require("dotenv").config();
+}
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
