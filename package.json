@@ -1,14 +1,21 @@
 {
-  "name": "welearn",
+  "name": "my-webpack-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "My webpack project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "back": "nodemon server",
+    "start": "node server.js",
     "front": "cd client && npm start",
     "dev": "concurrently \"npm run front\" \"npm run back\"",
-    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"},
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -34,6 +41,14 @@
     "nodemailer-mailgun-transport": "^2.0.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.12",
+    "@webpack-cli/generators": "^2.0.0",
+    "babel-loader": "^8.2.2",
+    "html-webpack-plugin": "^5.3.1",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
