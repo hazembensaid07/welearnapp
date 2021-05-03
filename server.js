@@ -44,9 +44,6 @@ app.use("/api", blogRoutes);
 app.use("/api", commentsRoutes);
 app.use("/api", coursenrollRoutes);
 // serve static assets if an production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
