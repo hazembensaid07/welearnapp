@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const path = require("path");
+
 const app = express();
 
 // connect to db
@@ -43,7 +43,10 @@ app.use("/api", courseRoutes);
 app.use("/api", blogRoutes);
 app.use("/api", commentsRoutes);
 app.use("/api", coursenrollRoutes);
+<<<<<<< HEAD
 // serve static assets if an production
+=======
+>>>>>>> parent of 5c49a8c (deploy)
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
